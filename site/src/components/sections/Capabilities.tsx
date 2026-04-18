@@ -87,27 +87,27 @@ const MOBILE_GROUPS = [
   {
     label: "Obstetrics",
     title: "Fetal Development",
-    color: "#a78bfa",
+    color: "#4fc3f7",
     icon: (
       <svg viewBox="0 0 48 56" className="h-full w-full" aria-hidden>
         {/* Uterus outline */}
         <path d="M 10 20 Q 10 10 24 10 Q 38 10 38 20 L 38 40 Q 36 52 24 52 Q 12 52 10 40 Z"
-          fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.25)" strokeWidth="0.8" />
+          fill="rgba(79,195,247,0.06)" stroke="rgba(79,195,247,0.25)" strokeWidth="0.8" />
         {/* Fetal head */}
-        <circle cx="24" cy="24" r="8" fill="rgba(167,139,250,0.14)" stroke="rgba(167,139,250,0.55)" strokeWidth="0.7" />
+        <circle cx="24" cy="24" r="8" fill="rgba(79,195,247,0.14)" stroke="rgba(79,195,247,0.55)" strokeWidth="0.7" />
         {/* BPD diameter line */}
-        <line x1="16" x2="32" y1="24" y2="24" stroke="rgba(167,139,250,0.6)" strokeWidth="0.5" strokeDasharray="1 1" />
+        <line x1="16" x2="32" y1="24" y2="24" stroke="rgba(79,195,247,0.6)" strokeWidth="0.5" strokeDasharray="1 1" />
         {/* HC arc hint */}
-        <circle cx="24" cy="24" r="8" fill="none" stroke="rgba(167,139,250,0.3)" strokeWidth="0.4" strokeDasharray="2 1" />
+        <circle cx="24" cy="24" r="8" fill="none" stroke="rgba(79,195,247,0.3)" strokeWidth="0.4" strokeDasharray="2 1" />
         {/* Eye dot */}
         <circle cx="21" cy="23" r="0.8" fill="rgba(255,255,255,0.7)" />
         {/* Body curve */}
         <path d="M 24 32 Q 20 38 22 44 Q 24 48 26 44 Q 28 38 24 32"
-          fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.45)" strokeWidth="0.6" />
+          fill="rgba(79,195,247,0.12)" stroke="rgba(79,195,247,0.45)" strokeWidth="0.6" />
         {/* Heartbeat line */}
         <polyline points="12,44 15,44 17,40 19,48 21,44 24,44"
-          fill="none" stroke="rgba(167,139,250,0.8)" strokeWidth="0.7" strokeLinecap="round" />
-        <text x="28" y="45" fontSize="3.5" fill="rgba(167,139,250,0.7)" fontFamily="monospace">HR</text>
+          fill="none" stroke="rgba(79,195,247,0.8)" strokeWidth="0.7" strokeLinecap="round" />
+        <text x="28" y="45" fontSize="3.5" fill="rgba(79,195,247,0.7)" fontFamily="monospace">HR</text>
       </svg>
     ),
     tags: ["Gestational age", "BPD · HC · AC · FL", "Heart rate", "Growth curves", "Presentation"],
@@ -115,24 +115,24 @@ const MOBILE_GROUPS = [
   {
     label: "Emergency",
     title: "FAST & Pathology",
-    color: "#f87171",
+    color: "#4fc3f7",
     icon: (
       <svg viewBox="0 0 48 56" className="h-full w-full" aria-hidden>
         {/* Body silhouette */}
         <path d="M 10 14 Q 10 6 24 6 Q 38 6 38 14 L 40 50 Q 38 54 24 54 Q 10 54 8 50 Z"
-          fill="rgba(248,113,113,0.05)" stroke="rgba(248,113,113,0.2)" strokeWidth="0.8" />
+          fill="rgba(79,195,247,0.05)" stroke="rgba(79,195,247,0.2)" strokeWidth="0.8" />
         {/* Pericardial window */}
-        <ellipse cx="24" cy="20" rx="6" ry="5" fill="rgba(248,113,113,0.12)" stroke="rgba(248,113,113,0.5)" strokeWidth="0.6" />
+        <ellipse cx="24" cy="20" rx="6" ry="5" fill="rgba(79,195,247,0.12)" stroke="rgba(79,195,247,0.5)" strokeWidth="0.6" />
         {/* Heart icon inside */}
         <path d="M 22 19 Q 22 17 24 18 Q 26 17 26 19 Q 26 21 24 23 Q 22 21 22 19"
-          fill="rgba(248,113,113,0.6)" />
+          fill="rgba(79,195,247,0.6)" />
         {/* Fluid pockets */}
         <ellipse cx="16" cy="32" rx="4" ry="3" fill="rgba(79,195,247,0.25)" stroke="rgba(79,195,247,0.5)" strokeWidth="0.5" />
         <ellipse cx="32" cy="34" rx="4" ry="3" fill="rgba(79,195,247,0.25)" stroke="rgba(79,195,247,0.5)" strokeWidth="0.5" />
         <ellipse cx="24" cy="44" rx="5" ry="3" fill="rgba(79,195,247,0.25)" stroke="rgba(79,195,247,0.5)" strokeWidth="0.5" />
         {/* Alert badge */}
-        <circle cx="38" cy="12" r="6" fill="rgba(248,113,113,0.2)" stroke="rgba(248,113,113,0.8)" strokeWidth="0.7" />
-        <text x="38" y="14" textAnchor="middle" fontSize="7" fill="rgba(248,113,113,1)" fontFamily="monospace" fontWeight="bold">!</text>
+        <circle cx="38" cy="12" r="6" fill="rgba(79,195,247,0.2)" stroke="rgba(79,195,247,0.8)" strokeWidth="0.7" />
+        <text x="38" y="14" textAnchor="middle" fontSize="7" fill="rgba(79,195,247,1)" fontFamily="monospace" fontWeight="bold">!</text>
         {/* Fluid label */}
         <text x="24" y="40" textAnchor="middle" fontSize="3.5" fill="rgba(79,195,247,0.7)" fontFamily="monospace">FREE FLUID</text>
       </svg>
