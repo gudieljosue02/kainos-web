@@ -119,47 +119,76 @@ export function Capabilities() {
           </div>
         </div>
 
-        {/* ── All screen sizes: 3 grouped cards ── */}
-        <div className="mt-5 grid grid-cols-1 gap-3 md:mt-20 md:grid-cols-3 md:gap-6">
+        {/* ── Mobile: horizontal compact list ── */}
+        <div className="mt-5 grid grid-cols-1 gap-2 md:hidden">
           {MOBILE_GROUPS.map((group, i) => (
-            <Reveal key={group.title} delay={i * 100}>
+            <Reveal key={group.title} delay={i * 80}>
               <article
-                className="group relative h-full overflow-hidden rounded-[1rem] border bg-bg-elev-1/60 p-4 transition-all duration-500 hover:bg-bg-elev-1 md:rounded-[1.25rem] md:p-8 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]"
+                className="relative flex items-center gap-3 overflow-hidden rounded-[0.875rem] border bg-bg-elev-1/60 p-3"
                 style={{ borderColor: `${group.color}22` }}
               >
-                <Spotlight size={340} />
-
-                {/* Icon — compact on mobile, taller on desktop */}
-                <div className="relative z-10 mb-3 h-[80px] w-[66px] md:mb-6 md:h-[120px] md:w-[100px]">
+                {/* Icon — small fixed size */}
+                <div className="relative h-[56px] w-[46px] shrink-0">
                   {group.icon}
                 </div>
 
-                {/* Label + title */}
-                <div className="relative z-10 font-mono text-[9px] uppercase tracking-[0.22em] md:text-[10px]" style={{ color: `${group.color}99` }}>
+                {/* Text + pills */}
+                <div className="flex-1 min-w-0">
+                  <div className="font-mono text-[8.5px] uppercase tracking-[0.22em]" style={{ color: `${group.color}80` }}>
+                    {group.label}
+                  </div>
+                  <h3 className="mt-0.5 text-[13px] font-medium leading-tight tracking-tight text-fg">
+                    {group.title}
+                  </h3>
+                  <div className="mt-1.5 flex flex-wrap gap-1">
+                    {group.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border px-1.5 py-[2px] font-mono text-[8px] leading-none"
+                        style={{ borderColor: `${group.color}30`, color: `${group.color}bb`, background: `${group.color}08` }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pointer-events-none absolute -right-4 -top-4 h-20 w-20 rounded-full opacity-15 blur-2xl" style={{ background: group.color }} />
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* ── Desktop: 3-column cards ── */}
+        <div className="mt-20 hidden grid-cols-3 gap-6 md:grid">
+          {MOBILE_GROUPS.map((group, i) => (
+            <Reveal key={group.title} delay={i * 100}>
+              <article
+                className="group relative h-full overflow-hidden rounded-[1.25rem] border bg-bg-elev-1/60 p-8 transition-all duration-500 hover:bg-bg-elev-1 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]"
+                style={{ borderColor: `${group.color}22` }}
+              >
+                <Spotlight size={340} />
+                <div className="relative z-10 mb-6 h-[120px] w-[100px]">
+                  {group.icon}
+                </div>
+                <div className="relative z-10 font-mono text-[10px] uppercase tracking-[0.22em]" style={{ color: `${group.color}99` }}>
                   {group.label}
                 </div>
-                <h3 className="relative z-10 mt-1 text-[14px] font-medium leading-tight tracking-tight text-fg md:mt-2 md:text-[19px]">
+                <h3 className="relative z-10 mt-2 text-[19px] font-medium leading-tight tracking-tight text-fg">
                   {group.title}
                 </h3>
-
-                {/* Tag pills */}
-                <div className="relative z-10 mt-2 flex flex-wrap gap-1 md:mt-4">
+                <div className="relative z-10 mt-4 flex flex-wrap gap-1">
                   {group.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border px-2 py-0.5 font-mono text-[9px] leading-none md:text-[10px]"
+                      className="rounded-full border px-2 py-0.5 font-mono text-[10px] leading-none"
                       style={{ borderColor: `${group.color}33`, color: `${group.color}cc`, background: `${group.color}0a` }}
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-
-                {/* Corner glow */}
-                <div
-                  className="pointer-events-none absolute -right-6 -top-6 h-32 w-32 rounded-full opacity-20 blur-2xl transition-opacity duration-500 group-hover:opacity-30"
-                  style={{ background: group.color }}
-                />
+                <div className="pointer-events-none absolute -right-6 -top-6 h-32 w-32 rounded-full opacity-20 blur-2xl transition-opacity duration-500 group-hover:opacity-30" style={{ background: group.color }} />
               </article>
             </Reveal>
           ))}
