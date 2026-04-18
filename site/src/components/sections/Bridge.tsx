@@ -57,24 +57,6 @@ export function Bridge() {
           </div>
         </Reveal>
 
-        {/* Step detail cards */}
-        <div className="mt-4 grid grid-cols-1 gap-3 md:mt-16 md:grid-cols-3 md:gap-6">
-          {t.bridge.steps.map((step, i) => (
-            <Reveal key={step.number} delay={i * 100}>
-              <article className="relative h-full overflow-hidden rounded-[1rem] border border-hairline bg-bg-elev-1/50 p-4 transition-all duration-500 hover:bg-bg-elev-1 md:rounded-[1.25rem] md:p-7 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]">
-                <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
-                  {step.number}
-                </div>
-                <h3 className="mt-2 text-[14px] font-medium tracking-tight text-fg md:mt-4 md:text-xl">
-                  {step.title}
-                </h3>
-                <p className="text-body mt-1.5 text-[12px] md:mt-3 md:text-[14.5px]">
-                  {step.body}
-                </p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   );
