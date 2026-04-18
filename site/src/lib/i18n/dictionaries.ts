@@ -295,7 +295,7 @@ export const dict = {
       title: "El médico correcto rara vez es el primero.",
       titleLead: "El médico correcto rara vez es ",
       titleTail: "el primero.",
-      body: "En urgencias y clínicas rurales en Latinoamérica y África, quien recibe al paciente suele ser un médico general — no un radiólogo ni un especialista en ultrasonido. El equipo existe. La experiencia no.",
+      body: "En urgencias y clínicas rurales alrededor del mundo, quien recibe al paciente suele ser un médico general — no un radiólogo ni un especialista en ultrasonido. El equipo existe. La experiencia no.",
       stats: [
         {
           value: "2/3",
