@@ -30,7 +30,7 @@ export function AlethiaKit() {
               </p>
             </Reveal>
             <Reveal delay={160}>
-              <p className="text-body mt-2 max-w-lg text-[13px] md:mt-6 md:text-[15.5px]">
+              <p className="text-body mt-2 hidden max-w-lg text-[13px] md:mt-6 md:block md:text-[15.5px]">
                 {t.kit.body}
               </p>
             </Reveal>
