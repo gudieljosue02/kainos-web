@@ -39,9 +39,9 @@ export const dict = {
           source: "WHO",
         },
         {
-          value: "70%",
-          label: "of maternal deaths in 2023 occurred in Sub-Saharan Africa",
-          source: "WHO / UNFPA / UNICEF, 2023",
+          value: "1.9M",
+          label: "stillbirths occur every year — most from conditions an ultrasound could have detected",
+          source: "WHO / The Lancet Stillbirths Series",
         },
         {
           value: "30–40%",
@@ -303,9 +303,9 @@ export const dict = {
           source: "OMS",
         },
         {
-          value: "70%",
-          label: "de las muertes maternas de 2023 ocurrieron en África subsahariana",
-          source: "OMS / UNFPA / UNICEF, 2023",
+          value: "1.9M",
+          label: "bebés nacen muertos cada año — la mayoría por condiciones que un ultrasonido pudo haber detectado",
+          source: "OMS / The Lancet Stillbirths Series",
         },
         {
           value: "30–40%",
