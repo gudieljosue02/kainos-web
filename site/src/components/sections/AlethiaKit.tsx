@@ -74,14 +74,14 @@ export function AlethiaKit() {
           <div className="lg:col-span-7">
             <Reveal>
               <div className="shell">
-                <div className="shell-inner relative overflow-hidden p-4 md:p-10">
+                <div className="shell-inner relative overflow-hidden p-4 md:p-6">
                   <div className="ambient-grid absolute inset-0 opacity-40" />
                   {/* Mobile visual */}
                   <div className="md:hidden">
                     <KitRenderMobile />
                   </div>
                   {/* Desktop visual */}
-                  <div className="hidden md:block">
+                  <div className="hidden md:block md:min-h-[440px]">
                     <KitRender />
                   </div>
                 </div>
@@ -140,7 +140,7 @@ function KitRenderMobile() {
  */
 function KitRender() {
   return (
-    <div className="relative aspect-[16/10] w-full">
+    <div className="relative aspect-[16/9] w-full">
       {/* Tablet body */}
       <div className="absolute left-1/2 top-1/2 h-[74%] w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-[22px] border border-white/10 bg-gradient-to-br from-[#14202e] to-[#0a1220] p-2 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.08)]">
         {/* Screen */}
