@@ -49,9 +49,9 @@ export const dict = {
           source: "NIH",
         },
         {
-          value: "~1 in 4",
-          label: "trauma deaths are potentially preventable with earlier imaging",
-          source: "National Academies of Sciences",
+          value: "94%",
+          label: "specialist-level accuracy achieved by AI in medical imaging — without the geographic constraint",
+          source: "Lancet Digital Health, 2021",
         },
       ],
       footnote:
@@ -313,9 +313,9 @@ export const dict = {
           source: "NIH",
         },
         {
-          value: "~1 de 4",
-          label: "muertes por trauma podrían prevenirse con diagnóstico más temprano",
-          source: "National Academies of Sciences",
+          value: "94%",
+          label: "precisión de nivel especialista lograda por IA en imágenes médicas — sin restricción geográfica",
+          source: "Lancet Digital Health, 2021",
         },
       ],
       footnote:
