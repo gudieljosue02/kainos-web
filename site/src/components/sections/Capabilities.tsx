@@ -5,56 +5,6 @@ import { Reveal } from "@/components/Reveal";
 import { Spotlight } from "@/components/fx/Spotlight";
 import { ScanReveal } from "@/components/fx/ScanReveal";
 
-/* ── Desktop silhouettes (unchanged) ──────────────────────── */
-const SILHOUETTES = [
-  () => (
-    <svg viewBox="0 0 100 70" className="h-full w-full">
-      <path d="M 12 42 Q 18 22 38 20 Q 62 15 82 28 Q 92 35 88 50 Q 78 60 60 58 Q 38 55 22 55 Q 10 52 12 42 Z" fill="url(#grad-liver)" stroke="rgba(79,195,247,0.4)" strokeWidth="0.6" />
-      <defs><linearGradient id="grad-liver" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stopColor="rgba(79,195,247,0.22)" /><stop offset="100%" stopColor="rgba(79,195,247,0.04)" /></linearGradient></defs>
-    </svg>
-  ),
-  () => (
-    <svg viewBox="0 0 100 70" className="h-full w-full">
-      <path d="M 28 22 Q 18 22 18 35 Q 18 50 28 52 Q 40 52 42 40 Q 44 22 34 20 Q 30 20 28 22 Z" fill="url(#grad-kidney)" stroke="rgba(79,195,247,0.4)" strokeWidth="0.6" />
-      <path d="M 72 22 Q 62 22 62 35 Q 62 50 72 52 Q 84 52 86 40 Q 88 22 78 20 Q 74 20 72 22 Z" fill="url(#grad-kidney)" stroke="rgba(79,195,247,0.4)" strokeWidth="0.6" />
-      <defs><linearGradient id="grad-kidney" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stopColor="rgba(79,195,247,0.22)" /><stop offset="100%" stopColor="rgba(79,195,247,0.04)" /></linearGradient></defs>
-    </svg>
-  ),
-  () => (
-    <svg viewBox="0 0 100 70" className="h-full w-full">
-      <path d="M 35 25 Q 50 18 65 25 Q 72 32 70 45 Q 65 56 50 56 Q 35 56 30 45 Q 28 32 35 25 Z" fill="url(#grad-bladder)" stroke="rgba(79,195,247,0.4)" strokeWidth="0.6" />
-      <line x1="35" x2="65" y1="38" y2="38" stroke="rgba(79,195,247,0.3)" strokeWidth="0.4" strokeDasharray="1.5 1.5" />
-      <defs><linearGradient id="grad-bladder" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stopColor="rgba(79,195,247,0.2)" /><stop offset="100%" stopColor="rgba(79,195,247,0.04)" /></linearGradient></defs>
-    </svg>
-  ),
-  () => (
-    <svg viewBox="0 0 100 70" className="h-full w-full">
-      <circle cx="55" cy="32" r="11" fill="url(#grad-fetal)" stroke="rgba(79,195,247,0.4)" strokeWidth="0.6" />
-      <path d="M 55 43 Q 40 45 35 52 Q 32 58 40 58 Q 52 58 58 50" fill="url(#grad-fetal)" stroke="rgba(79,195,247,0.4)" strokeWidth="0.6" />
-      <circle cx="50" cy="30" r="1" fill="rgba(255,255,255,0.8)" />
-      <defs><linearGradient id="grad-fetal" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stopColor="rgba(79,195,247,0.22)" /><stop offset="100%" stopColor="rgba(79,195,247,0.04)" /></linearGradient></defs>
-    </svg>
-  ),
-  () => (
-    <svg viewBox="0 0 100 70" className="h-full w-full">
-      <path d="M 35 10 Q 50 6 65 10 L 70 60 Q 50 62 30 60 Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.15)" strokeWidth="0.6" />
-      {[[50,18],[62,30],[38,40],[52,50]].map(([x,y]) => (
-        <g key={`${x}-${y}`}>
-          <circle cx={x} cy={y} r="2.5" fill="rgba(79,195,247,0.8)" />
-          <circle cx={x} cy={y} r="5" fill="none" stroke="rgba(79,195,247,0.35)" strokeWidth="0.5" />
-        </g>
-      ))}
-    </svg>
-  ),
-  () => (
-    <svg viewBox="0 0 100 70" className="h-full w-full">
-      <rect x="30" y="16" width="40" height="44" rx="3" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.15)" strokeWidth="0.6" />
-      {[28,34,40].map((y) => (<line key={y} x1="36" x2="64" y1={y} y2={y} stroke="rgba(255,255,255,0.25)" strokeWidth="0.5" />))}
-      <circle cx="64" cy="48" r="6" fill="rgba(239,91,91,0.25)" stroke="rgba(239,91,91,0.8)" strokeWidth="0.6" />
-      <text x="64" y="50" textAnchor="middle" fontSize="6" fill="rgba(239,91,91,1)" fontFamily="monospace" fontWeight="bold">!</text>
-    </svg>
-  ),
-];
 
 /* ── Mobile grouped cards data ────────────────────────────── */
 const MOBILE_GROUPS = [
@@ -169,78 +119,50 @@ export function Capabilities() {
           </div>
         </div>
 
-        {/* ── Mobile: 3 grouped cards ── */}
-        <div className="mt-5 grid grid-cols-1 gap-3 md:hidden">
+        {/* ── All screen sizes: 3 grouped cards ── */}
+        <div className="mt-5 grid grid-cols-1 gap-3 md:mt-20 md:grid-cols-3 md:gap-6">
           {MOBILE_GROUPS.map((group, i) => (
             <Reveal key={group.title} delay={i * 100}>
               <article
-                className="relative overflow-hidden rounded-[1rem] border border-hairline bg-bg-elev-1/60 p-4"
+                className="group relative h-full overflow-hidden rounded-[1rem] border bg-bg-elev-1/60 p-4 transition-all duration-500 hover:bg-bg-elev-1 md:rounded-[1.25rem] md:p-8 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]"
                 style={{ borderColor: `${group.color}22` }}
               >
-                <div className="flex items-start gap-4">
-                  {/* Icon */}
-                  <div className="relative h-[72px] w-[60px] shrink-0">
-                    {group.icon}
-                  </div>
+                <Spotlight size={340} />
 
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <div className="font-mono text-[9px] uppercase tracking-[0.22em]" style={{ color: `${group.color}99` }}>
-                      {group.label}
-                    </div>
-                    <h3 className="mt-0.5 text-[14px] font-medium leading-tight tracking-tight text-fg">
-                      {group.title}
-                    </h3>
-                    {/* Tag pills */}
-                    <div className="mt-2 flex flex-wrap gap-1">
-                      {group.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full border px-2 py-0.5 font-mono text-[9px] leading-none"
-                          style={{ borderColor: `${group.color}33`, color: `${group.color}cc`, background: `${group.color}0a` }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                {/* Icon — compact on mobile, taller on desktop */}
+                <div className="relative z-10 mb-3 h-[80px] w-[66px] md:mb-6 md:h-[120px] md:w-[100px]">
+                  {group.icon}
                 </div>
 
-                {/* Subtle corner glow */}
+                {/* Label + title */}
+                <div className="relative z-10 font-mono text-[9px] uppercase tracking-[0.22em] md:text-[10px]" style={{ color: `${group.color}99` }}>
+                  {group.label}
+                </div>
+                <h3 className="relative z-10 mt-1 text-[14px] font-medium leading-tight tracking-tight text-fg md:mt-2 md:text-[19px]">
+                  {group.title}
+                </h3>
+
+                {/* Tag pills */}
+                <div className="relative z-10 mt-2 flex flex-wrap gap-1 md:mt-4">
+                  {group.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border px-2 py-0.5 font-mono text-[9px] leading-none md:text-[10px]"
+                      style={{ borderColor: `${group.color}33`, color: `${group.color}cc`, background: `${group.color}0a` }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Corner glow */}
                 <div
-                  className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 rounded-full opacity-20 blur-2xl"
+                  className="pointer-events-none absolute -right-6 -top-6 h-32 w-32 rounded-full opacity-20 blur-2xl transition-opacity duration-500 group-hover:opacity-30"
                   style={{ background: group.color }}
                 />
               </article>
             </Reveal>
           ))}
-        </div>
-
-        {/* ── Desktop: bento 6-column grid ── */}
-        <div className="mt-20 hidden gap-5 md:grid lg:grid-cols-6 lg:grid-rows-2" style={{ gridTemplateColumns: "repeat(6, 1fr)" }}>
-          {t.capabilities.items.map((item, i) => {
-            const Silhouette = SILHOUETTES[i];
-            const spanClass = ["lg:col-span-2","lg:col-span-2","lg:col-span-2","lg:col-span-3","lg:col-span-2","lg:col-span-1"][i];
-            return (
-              <Reveal key={item.title} delay={i * 80}>
-                <article className={`group relative flex h-full flex-col overflow-hidden rounded-[1rem] border border-hairline bg-bg-elev-1/60 p-7 transition-all duration-700 hover:border-hairline-strong hover:bg-bg-elev-1 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] ${spanClass}`}>
-                  <Spotlight size={320} />
-                  <div className="relative z-10 h-24 overflow-hidden">
-                    {Silhouette ? <Silhouette /> : null}
-                  </div>
-                  <h3 className="relative z-10 mt-5 text-[19px] font-medium leading-tight tracking-tight text-fg">
-                    {item.title}
-                  </h3>
-                  <p className="relative z-10 text-body mt-2.5 text-[13.5px]">
-                    {item.body}
-                  </p>
-                  <div className="absolute right-4 top-4 z-10 font-mono text-[9.5px] uppercase tracking-[0.2em] text-fg-ghost transition-colors duration-500 group-hover:text-fg-mute">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                </article>
-              </Reveal>
-            );
-          })}
         </div>
       </div>
     </section>
