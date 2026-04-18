@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(tee /tmp/kainos-dev.log)",
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code} time=%{time_total}s\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(lsof -iTCP:3000 -sTCP:LISTEN -n)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(curl -s http://localhost:3000/_next/static/css/app/layout.css)",
+      "Bash(curl -s \"http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__0a9k9fe._.css\")",
+      "Bash(xargs -I{} curl -s \"http://localhost:3000{}\")",
+      "Bash(lsof -iTCP:3000 -sTCP:LISTEN -t)",
+      "Bash(xargs kill *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s 'http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__0a9k9fe._.css')",
+      "WebFetch(domain:sohub.digital)",
+      "Bash(git config *)",
+      "Bash(curl -s -H \"Authorization: token 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\" https://api.github.com/user)",
+      "Bash(curl -s -X POST -H 'Authorization: token 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' -H 'Content-Type: application/json' -d '{\"name\":\"kainos-web\",\"private\":true,\"description\":\"Kainos Medical investor website\"}' https://api.github.com/user/repos)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
