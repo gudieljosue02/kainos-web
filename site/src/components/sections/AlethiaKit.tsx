@@ -3,6 +3,7 @@
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { Reveal } from "@/components/Reveal";
 import { UltrasoundVisual } from "@/components/UltrasoundVisual";
+import { ScanReveal } from "@/components/fx/ScanReveal";
 
 export function AlethiaKit() {
   const { t } = useLocale();
@@ -20,7 +21,8 @@ export function AlethiaKit() {
               </div>
             </Reveal>
             <Reveal as="h2" className="h-section text-[1.6rem] sm:text-[2.25rem] md:text-5xl lg:text-6xl">
-              {t.kit.title}
+              Alethia{" "}
+              <ScanReveal text="Kit." />
             </Reveal>
             <Reveal delay={100}>
               <p className="mt-2 text-[14px] leading-tight tracking-tight text-fg-dim md:mt-5 md:text-xl">
@@ -54,8 +56,8 @@ export function AlethiaKit() {
             </ul>
           </div>
 
-          {/* Right — visual composition of the Kit (hidden on mobile to save space) */}
-          <div className="hidden lg:col-span-7 lg:block">
+          {/* Right — visual composition of the Kit */}
+          <div className="lg:col-span-7">
             <Reveal>
               <div className="shell">
                 <div className="shell-inner relative overflow-hidden p-6 md:p-10">
