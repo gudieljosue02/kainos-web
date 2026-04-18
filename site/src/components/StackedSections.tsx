@@ -12,20 +12,17 @@ export function StackedSections({ children }: { children: React.ReactNode }) {
     const container = containerRef.current;
     if (!container) return;
 
-    const desktop = window.innerWidth >= 768;
     const cards = Array.from(
       container.querySelectorAll<HTMLElement>("[data-sc]")
     );
 
-    // Apply sticky + top on desktop only
+    // Set sticky + height on every card (mobile + desktop)
     cards.forEach((card, i) => {
-      if (desktop) {
-        card.style.position = "sticky";
-        card.style.top = `${STICK_TOP + i * PEEK_GAP}px`;
-      }
+      const top = STICK_TOP + i * PEEK_GAP;
+      card.style.position = "sticky";
+      card.style.top = `${top}px`;
+      card.style.height = `calc(100dvh - ${top}px)`;
     });
-
-    if (!desktop) return;
 
     const update = () => {
       cards.forEach((card, i) => {
@@ -51,13 +48,13 @@ export function StackedSections({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div ref={containerRef} className="flex flex-col gap-4 px-3 pb-4 md:block md:px-0 md:pb-0">
+    <div ref={containerRef}>
       {Children.toArray(children).map((child, i) => (
         <div
           key={i}
           data-sc=""
           style={{ zIndex: 10 + i, willChange: "transform", transition: "transform 80ms linear" }}
-          className="overflow-hidden rounded-2xl border border-white/[0.07] bg-[#060d1c] [color:#f3f5f8] shadow-[0_4px_20px_rgba(0,0,0,0.12)] md:mx-8 md:mb-4 md:shadow-[0_-16px_56px_rgba(0,0,0,0.18)] lg:mx-auto lg:max-w-5xl"
+          className="mx-3 mb-3 overflow-y-auto overscroll-contain rounded-2xl border border-white/[0.07] bg-[#060d1c] [color:#f3f5f8] shadow-[0_-16px_56px_rgba(0,0,0,0.15)] sm:mx-5 md:mx-8 lg:mx-auto lg:max-w-5xl"
         >
           {child}
         </div>
