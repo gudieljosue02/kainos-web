@@ -480,6 +480,14 @@ body {
     filter: blur(0);
   }
 }
+/* Mobile: reduce section padding inside stacked cards */
+@media (max-width: 767px) {
+  [data-sc] section {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+}
+
 @keyframes nav-shimmer {
   from { transform: translateX(0%); opacity: 1; }
   to   { transform: translateX(200%); opacity: 0; }
