@@ -44,16 +44,16 @@ export function Opportunity() {
         <div className="mt-5 grid grid-cols-3 gap-2 md:mt-10 md:gap-6">
           {t.opportunity.metrics.map((metric, i) => (
             <Reveal key={metric.value} delay={i * 120}>
-              <article className="group relative h-full overflow-hidden rounded-[1rem] border border-hairline bg-gradient-to-br from-[#061326]/80 to-[#0a1220]/40 p-3 transition-all duration-500 hover:from-[#0a1e3d]/60 hover:to-[#0a1220]/80 md:rounded-[1.5rem] md:p-8 lg:p-10 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]">
-                <Spotlight size={360} />
-                <div className="relative z-10 metric text-[1.75rem] font-medium leading-none tracking-tighter text-fg md:text-[3.5rem] lg:text-[4.25rem]">
+              <article className="group relative h-full overflow-hidden rounded-[1rem] border border-hairline bg-gradient-to-br from-[#061326]/80 to-[#0a1220]/40 p-3 transition-all duration-500 hover:from-[#0a1e3d]/60 hover:to-[#0a1220]/80 md:rounded-[1.25rem] md:p-5 lg:p-6 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]">
+                <Spotlight size={280} />
+                <div className="relative z-10 metric text-[1.75rem] font-medium leading-none tracking-tighter text-fg md:text-[2rem] lg:text-[2.5rem]">
                   <Counter value={metric.value} />
                 </div>
-                <p className="relative z-10 text-body mt-2 text-[10.5px] leading-snug md:mt-5 md:text-[15px]">
+                <p className="relative z-10 text-body mt-2 text-[10.5px] leading-snug md:mt-3 md:text-[13px]">
                   {metric.label}
                 </p>
-                <div className="relative z-10 mt-2 flex items-center gap-1 border-t border-hairline pt-2 font-mono text-[8px] uppercase tracking-[0.18em] text-fg-mute md:mt-6 md:gap-2 md:pt-4 md:text-[10px]">
-                  <span className="h-[1px] w-2 bg-fg-ghost md:w-4" />
+                <div className="relative z-10 mt-2 flex items-center gap-1 border-t border-hairline pt-2 font-mono text-[8px] uppercase tracking-[0.18em] text-fg-mute md:mt-3 md:gap-2 md:pt-3 md:text-[9px]">
+                  <span className="h-[1px] w-2 bg-fg-ghost md:w-3" />
                   <span className="hidden sm:inline">{metric.sub}</span>
                 </div>
                 <span className="pointer-events-none absolute right-0 top-0 h-24 w-24 opacity-30 [background:radial-gradient(circle_at_100%_0%,rgba(79,195,247,0.2)_0%,transparent_70%)]" />
