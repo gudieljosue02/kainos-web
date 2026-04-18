@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { List, X, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { List, X, ArrowUpRight, Globe } from "@phosphor-icons/react/dist/ssr";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { cn } from "@/lib/cn";
 
@@ -72,13 +72,14 @@ export function Navigation() {
 
           {/* Right side */}
           <div className="ml-auto flex items-center gap-2">
-            {/* Locale */}
+            {/* Locale toggle — always visible */}
             <button
               type="button"
               onClick={toggle}
               aria-label={t.lang.label}
-              className="hidden h-8 items-center rounded-md px-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-[#94a3b8] transition-colors duration-200 hover:text-[#0a1428] md:flex"
+              className="flex h-8 items-center gap-1.5 rounded-full border border-[#0a1428]/25 px-3 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-[#0a1428] transition-all duration-200 hover:border-[#0f2a54] hover:bg-[#0f2a54]/5"
             >
+              <Globe size={13} weight="regular" />
               {locale === "en" ? "ES" : "EN"}
             </button>
 
