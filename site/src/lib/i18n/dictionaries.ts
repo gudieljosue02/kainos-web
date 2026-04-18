@@ -196,7 +196,7 @@ export const dict = {
     opportunity: {
       eyebrow: "Opportunity",
       title: "A hardware-enabled software business at the edge of a generational market.",
-      titleLead: "A hardware-enabled software business at the edge of a ",
+      titleLead: "At the edge of a ",
       titleTail: "generational market.",
       body: "Point-of-care ultrasound and AI-enabled imaging are converging. Alethia Kit ships with both.",
       metrics: [
@@ -460,7 +460,7 @@ export const dict = {
     opportunity: {
       eyebrow: "Oportunidad",
       title: "Un negocio de software habilitado por hardware al borde de un mercado generacional.",
-      titleLead: "Un negocio de software habilitado por hardware al borde de un ",
+      titleLead: "Al borde de un ",
       titleTail: "mercado generacional.",
       body: "El ultrasonido point-of-care y la imagenología con IA están convergiendo. Alethia Kit llega con ambos.",
       metrics: [

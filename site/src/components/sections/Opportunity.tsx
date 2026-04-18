@@ -44,7 +44,7 @@ export function Opportunity() {
         <div className="mt-5 grid grid-cols-3 gap-2 md:mt-10 md:gap-6">
           {t.opportunity.metrics.map((metric, i) => (
             <Reveal key={metric.value} delay={i * 120}>
-              <article className="group relative h-full overflow-hidden rounded-[1rem] border border-hairline bg-gradient-to-br from-[#061326]/80 to-[#0a1220]/40 p-3 transition-all duration-500 hover:from-[#0a1e3d]/60 hover:to-[#0a1220]/80 md:rounded-[1.25rem] md:p-5 lg:p-6 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]">
+              <article className="group relative h-full overflow-hidden rounded-[1rem] border border-hairline bg-gradient-to-br from-[#061326]/80 to-[#0a1220]/40 p-3 text-center transition-all duration-500 hover:from-[#0a1e3d]/60 hover:to-[#0a1220]/80 md:rounded-[1.25rem] md:p-5 lg:p-6 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]">
                 <Spotlight size={280} />
                 <div className="relative z-10 metric text-[1.75rem] font-medium leading-none tracking-tighter text-fg md:text-[2rem] lg:text-[2.5rem]">
                   <Counter value={metric.value} />
