@@ -140,6 +140,7 @@ export function Contact() {
                           type="submit"
                           disabled={status === "submitting"}
                           className="btn-primary group disabled:opacity-60"
+                          style={{ background: "#0284c7", color: "#ffffff" }}
                         >
                           <span>
                             {status === "submitting"

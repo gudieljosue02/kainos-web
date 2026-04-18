@@ -96,7 +96,7 @@ export function Opportunity() {
               </div>
               <div className="relative flex flex-col gap-2 md:gap-3">
                 <Magnetic>
-                  <a href="#contact" className="btn-primary group">
+                  <a href="#contact" className="btn-primary group" style={{ background: "#0284c7", color: "#ffffff" }}>
                     <span>{t.opportunity.cta}</span>
                     <span className="icon-disc">
                       <ArrowUpRight size={14} weight="bold" />
