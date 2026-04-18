@@ -82,8 +82,8 @@ export function Opportunity() {
               </ul>
             </div>
 
-            {/* Right: CTA block */}
-            <div className="relative flex flex-col justify-between gap-4 p-4 md:gap-6 md:p-8 lg:p-12" style={{ flex: "1 1 42%" }}>
+            {/* Right: CTA block — hidden on mobile */}
+            <div className="relative hidden lg:flex flex-col justify-between gap-4 p-4 md:gap-6 md:p-8 lg:p-12" style={{ flex: "1 1 42%" }}>
               <div className="absolute inset-0 opacity-[0.5] [background:radial-gradient(ellipse_at_top_right,rgba(79,195,247,0.12)_0%,transparent_60%)]" />
               <div className="relative">
                 <h3 className="h-section text-2xl md:text-3xl lg:text-4xl">
