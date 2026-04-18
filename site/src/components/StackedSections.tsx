@@ -4,6 +4,7 @@ import { useEffect, useRef, Children } from "react";
 
 const STICK_TOP = 72;
 const PEEK_GAP = 10;
+const RUNWAY = 100; // px of page scroll needed to trigger next card
 
 export function StackedSections({ children }: { children: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,14 +16,6 @@ export function StackedSections({ children }: { children: React.ReactNode }) {
     const cards = Array.from(
       container.querySelectorAll<HTMLElement>("[data-sc]")
     );
-
-    // Set sticky + height on every card (mobile + desktop)
-    cards.forEach((card, i) => {
-      const top = STICK_TOP + i * PEEK_GAP;
-      card.style.position = "sticky";
-      card.style.top = `${top}px`;
-      card.style.height = `calc(100dvh - ${top}px)`;
-    });
 
     const update = () => {
       cards.forEach((card, i) => {
@@ -49,16 +42,28 @@ export function StackedSections({ children }: { children: React.ReactNode }) {
 
   return (
     <div ref={containerRef}>
-      {Children.toArray(children).map((child, i) => (
-        <div
-          key={i}
-          data-sc=""
-          style={{ zIndex: 10 + i, willChange: "transform", transition: "transform 80ms linear" }}
-          className="mx-3 mb-3 overflow-y-auto overscroll-contain rounded-2xl border border-white/[0.07] bg-[#060d1c] [color:#f3f5f8] shadow-[0_-16px_56px_rgba(0,0,0,0.15)] sm:mx-5 md:mx-8 lg:mx-auto lg:max-w-5xl"
-        >
-          {child}
-        </div>
-      ))}
+      {Children.toArray(children).map((child, i) => {
+        const top = STICK_TOP + i * PEEK_GAP;
+        return (
+          // Outer div: card height + runway gives just enough scroll space to transition
+          <div key={i} style={{ height: `calc(100dvh - ${top}px + ${RUNWAY}px)` }}>
+            <div
+              data-sc=""
+              style={{
+                position: "sticky",
+                top: `${top}px`,
+                height: `calc(100dvh - ${top}px)`,
+                zIndex: 10 + i,
+                willChange: "transform",
+                transition: "transform 80ms linear",
+              }}
+              className="mx-3 overflow-y-auto overscroll-contain rounded-2xl border border-white/[0.07] bg-[#060d1c] [color:#f3f5f8] shadow-[0_-16px_56px_rgba(0,0,0,0.15)] sm:mx-5 md:mx-8 lg:mx-auto lg:max-w-5xl"
+            >
+              {child}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
