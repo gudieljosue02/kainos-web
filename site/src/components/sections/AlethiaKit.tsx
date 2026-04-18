@@ -4,6 +4,7 @@ import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { Reveal } from "@/components/Reveal";
 import { UltrasoundVisual } from "@/components/UltrasoundVisual";
 import { ScanReveal } from "@/components/fx/ScanReveal";
+import { Spotlight } from "@/components/fx/Spotlight";
 
 export function AlethiaKit() {
   const { t } = useLocale();
@@ -73,18 +74,22 @@ export function AlethiaKit() {
         </div>
 
         {/* Bottom: full-width 3-col parts cards (desktop only) */}
-        <div className="mt-8 hidden grid-cols-3 gap-4 md:grid lg:mt-12">
+        <div className="mt-8 hidden grid-cols-3 gap-6 md:grid lg:mt-12">
           {t.kit.parts.map((part, i) => (
             <Reveal key={part.label} delay={220 + i * 80}>
-              <div className="flex h-full flex-col rounded-[0.875rem] border border-hairline bg-bg-elev-1/60 p-5 transition-colors duration-500 hover:border-hairline-strong hover:bg-bg-elev-1">
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+              <article className="group relative h-full overflow-hidden rounded-[1.25rem] border border-hairline bg-bg-elev-1/60 p-7 transition-all duration-500 hover:border-hairline-strong hover:bg-bg-elev-1 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]">
+                <Spotlight />
+                <div className="relative z-10 font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
                   {part.label}
-                </span>
-                <div className="mt-2 text-[15px] font-medium tracking-tight text-fg">
-                  {part.title}
                 </div>
-                <p className="text-body mt-1.5 text-[13px] leading-snug">{part.body}</p>
-              </div>
+                <h3 className="relative z-10 mt-3 text-[18px] font-medium tracking-tight text-fg">
+                  {part.title}
+                </h3>
+                <p className="relative z-10 text-body mt-2.5 text-[13.5px] leading-snug">{part.body}</p>
+                <div className="pointer-events-none absolute -right-1/4 -top-1/4 h-[200%] w-[200%] opacity-0 transition-opacity duration-700 group-hover:opacity-100">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(79,195,247,0.08)_0%,transparent_50%)]" />
+                </div>
+              </article>
             </Reveal>
           ))}
         </div>
