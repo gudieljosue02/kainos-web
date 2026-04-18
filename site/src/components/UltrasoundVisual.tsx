@@ -250,20 +250,6 @@ export function UltrasoundVisual({
             </div>
           </div>
 
-          {/* Live telemetry strip */}
-          <div
-            className={cn(
-              "absolute bottom-2 left-2 right-2 flex items-center justify-between rounded-md border border-white/10 bg-black/40 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.14em] text-white/70 backdrop-blur-[4px] transition-all duration-[800ms]",
-              visible ? "opacity-100" : "opacity-0"
-            )}
-            style={{ transitionDelay: "500ms" }}
-          >
-            <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#4fc3f7]" />
-              Alethia · live
-            </span>
-            <span className="text-white/50">60 fps · 92 ms</span>
-          </div>
         </>
       )}
 
