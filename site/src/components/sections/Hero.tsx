@@ -149,22 +149,17 @@ export function Hero() {
                     </div>
                   </div>
 
-                  {/* Telemetry bar under the card */}
-                  <div className="mt-3 flex items-center justify-between rounded-md border border-hairline bg-[#060d1c]/60 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.14em] text-fg-mute backdrop-blur-sm">
-                    <span className="flex items-center gap-1.5">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#4fc3f7]" />
-                      Alethia · live
-                    </span>
-                    <span className="opacity-60">60 fps · 92 ms</span>
+                  {/* Caption under the card */}
+                  <div className="mt-3 flex items-center justify-between px-2 font-mono text-[10.5px] uppercase tracking-[0.22em] text-fg-mute">
+                    <span>raw → annotated</span>
+                    <span>realtime inference</span>
                   </div>
                 </div>
               </Tilt>
 
 
-              {/* Live inference ticker — floats bottom-left of the visual */}
-              <div
-                className="absolute -bottom-4 left-1/2 z-30 -translate-x-1/2 opacity-0 [animation:fade-up_900ms_cubic-bezier(0.16,1,0.3,1)_2000ms_forwards]"
-              >
+              {/* Live inference ticker — flows below the visual */}
+              <div className="mt-5 flex justify-center opacity-0 [animation:fade-up_900ms_cubic-bezier(0.16,1,0.3,1)_2000ms_forwards]">
                 <LiveTicker />
               </div>
             </div>
