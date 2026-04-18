@@ -14,7 +14,7 @@ export function Opportunity() {
   return (
     <section
       id="opportunity"
-      className="relative isolate overflow-hidden py-5 md:py-28 lg:py-40"
+      className="relative isolate overflow-hidden pt-5 pb-8 md:pt-16 md:pb-10 lg:pt-24 lg:pb-12"
     >
       <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
         {/* Header */}
@@ -41,7 +41,7 @@ export function Opportunity() {
         </div>
 
         {/* Market metrics */}
-        <div className="mt-5 grid grid-cols-3 gap-2 md:mt-20 md:gap-6">
+        <div className="mt-5 grid grid-cols-3 gap-2 md:mt-10 md:gap-6">
           {t.opportunity.metrics.map((metric, i) => (
             <Reveal key={metric.value} delay={i * 120}>
               <article className="group relative h-full overflow-hidden rounded-[1rem] border border-hairline bg-gradient-to-br from-[#061326]/80 to-[#0a1220]/40 p-3 transition-all duration-500 hover:from-[#0a1e3d]/60 hover:to-[#0a1220]/80 md:rounded-[1.5rem] md:p-8 lg:p-10 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]">
@@ -63,7 +63,7 @@ export function Opportunity() {
         </div>
 
         {/* Why now + CTA */}
-        <div className="mt-5 shell md:mt-20">
+        <div className="mt-5 shell md:mt-8">
           <div className="shell-inner flex flex-col lg:flex-row">
             {/* Left: why now */}
             <div className="border-b border-hairline p-4 md:p-8 lg:border-b-0 lg:border-r lg:p-12" style={{ flex: "0 0 58%" }}>
