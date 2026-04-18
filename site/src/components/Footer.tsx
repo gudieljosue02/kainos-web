@@ -6,7 +6,7 @@ export function Footer() {
   const { t } = useLocale();
 
   return (
-    <footer className="relative isolate overflow-hidden border-t border-hairline pt-20 pb-12">
+    <footer className="relative isolate overflow-hidden border-t border-white/[0.07] bg-[#060d1c] pt-20 pb-12 text-[#f3f5f8]">
       <div className="mx-auto w-full max-w-7xl px-5 md:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* Left: brand */}
