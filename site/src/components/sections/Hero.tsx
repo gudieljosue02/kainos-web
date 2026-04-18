@@ -137,7 +137,7 @@ export function Hero() {
               <Tilt max={6} perspective={1400}>
                 <div className="shell relative">
                   <div className="shell-inner relative overflow-hidden">
-                    <UltrasoundVisual className="rounded-[calc(2rem-0.375rem-1px)]" />
+                    <UltrasoundVisual className="rounded-[calc(2rem-0.375rem-1px)]" withAnnotations={false} />
 
                     {/* Top meta strip */}
                     <div className="absolute left-0 right-0 top-0 flex items-center justify-between px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-fg-mute">
@@ -157,8 +157,6 @@ export function Hero() {
                 </div>
               </Tilt>
 
-              {/* Floating AI detection chips around the visual */}
-              <FloatingChips />
 
               {/* Live inference ticker — floats bottom-left of the visual */}
               <div
