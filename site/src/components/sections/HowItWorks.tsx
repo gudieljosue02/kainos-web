@@ -2,12 +2,12 @@
 
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { Reveal } from "@/components/Reveal";
-import { VideoCamera, Brain, MonitorPlay } from "@phosphor-icons/react/dist/ssr";
+import { WaveSquare, Atom, Crosshair } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
 import { Spotlight } from "@/components/fx/Spotlight";
 import { ScanReveal } from "@/components/fx/ScanReveal";
 
-const ICONS: Icon[] = [VideoCamera, Brain, MonitorPlay];
+const ICONS: Icon[] = [WaveSquare, Atom, Crosshair];
 
 export function HowItWorks() {
   const { t } = useLocale();
