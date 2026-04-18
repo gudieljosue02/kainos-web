@@ -5,6 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { Spotlight } from "@/components/fx/Spotlight";
 import { ScanReveal } from "@/components/fx/ScanReveal";
 
+/* ── Desktop silhouettes (unchanged) ──────────────────────── */
 const SILHOUETTES = [
   () => (
     <svg viewBox="0 0 100 70" className="h-full w-full">
@@ -55,6 +56,91 @@ const SILHOUETTES = [
   ),
 ];
 
+/* ── Mobile grouped cards data ────────────────────────────── */
+const MOBILE_GROUPS = [
+  {
+    label: "Abdominal",
+    title: "Abdominal Organs",
+    color: "#4fc3f7",
+    icon: (
+      <svg viewBox="0 0 48 56" className="h-full w-full" aria-hidden>
+        {/* Body outline */}
+        <path d="M 10 14 Q 10 6 24 6 Q 38 6 38 14 L 40 50 Q 38 54 24 54 Q 10 54 8 50 Z"
+          fill="rgba(79,195,247,0.06)" stroke="rgba(79,195,247,0.25)" strokeWidth="0.8" />
+        {/* Liver */}
+        <path d="M 13 18 Q 16 14 26 14 Q 32 14 34 18 Q 34 24 27 25 Q 18 25 13 22 Z"
+          fill="rgba(79,195,247,0.18)" stroke="rgba(79,195,247,0.6)" strokeWidth="0.6" />
+        <text x="23" y="21" textAnchor="middle" fontSize="4" fill="rgba(79,195,247,0.9)" fontFamily="monospace">LIVER</text>
+        {/* Left kidney */}
+        <ellipse cx="16" cy="33" rx="4" ry="6" fill="rgba(79,195,247,0.14)" stroke="rgba(79,195,247,0.5)" strokeWidth="0.6" />
+        {/* Right kidney */}
+        <ellipse cx="32" cy="33" rx="4" ry="6" fill="rgba(79,195,247,0.14)" stroke="rgba(79,195,247,0.5)" strokeWidth="0.6" />
+        <text x="24" y="33.5" textAnchor="middle" fontSize="3.5" fill="rgba(79,195,247,0.7)" fontFamily="monospace">KIDNEYS</text>
+        {/* Bladder */}
+        <path d="M 19 44 Q 24 40 29 44 Q 30 49 24 50 Q 18 49 19 44 Z"
+          fill="rgba(79,195,247,0.12)" stroke="rgba(79,195,247,0.45)" strokeWidth="0.6" />
+        <text x="24" y="47" textAnchor="middle" fontSize="3.5" fill="rgba(79,195,247,0.7)" fontFamily="monospace">BLADDER</text>
+      </svg>
+    ),
+    tags: ["Liver echogenicity", "Kidney morphology", "Bladder volume", "Hydronephrosis", "Free fluid (Morison's)"],
+  },
+  {
+    label: "Obstetrics",
+    title: "Fetal Development",
+    color: "#a78bfa",
+    icon: (
+      <svg viewBox="0 0 48 56" className="h-full w-full" aria-hidden>
+        {/* Uterus outline */}
+        <path d="M 10 20 Q 10 10 24 10 Q 38 10 38 20 L 38 40 Q 36 52 24 52 Q 12 52 10 40 Z"
+          fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.25)" strokeWidth="0.8" />
+        {/* Fetal head */}
+        <circle cx="24" cy="24" r="8" fill="rgba(167,139,250,0.14)" stroke="rgba(167,139,250,0.55)" strokeWidth="0.7" />
+        {/* BPD diameter line */}
+        <line x1="16" x2="32" y1="24" y2="24" stroke="rgba(167,139,250,0.6)" strokeWidth="0.5" strokeDasharray="1 1" />
+        {/* HC arc hint */}
+        <circle cx="24" cy="24" r="8" fill="none" stroke="rgba(167,139,250,0.3)" strokeWidth="0.4" strokeDasharray="2 1" />
+        {/* Eye dot */}
+        <circle cx="21" cy="23" r="0.8" fill="rgba(255,255,255,0.7)" />
+        {/* Body curve */}
+        <path d="M 24 32 Q 20 38 22 44 Q 24 48 26 44 Q 28 38 24 32"
+          fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.45)" strokeWidth="0.6" />
+        {/* Heartbeat line */}
+        <polyline points="12,44 15,44 17,40 19,48 21,44 24,44"
+          fill="none" stroke="rgba(167,139,250,0.8)" strokeWidth="0.7" strokeLinecap="round" />
+        <text x="28" y="45" fontSize="3.5" fill="rgba(167,139,250,0.7)" fontFamily="monospace">HR</text>
+      </svg>
+    ),
+    tags: ["Gestational age", "BPD · HC · AC · FL", "Heart rate", "Growth curves", "Presentation"],
+  },
+  {
+    label: "Emergency",
+    title: "FAST & Pathology",
+    color: "#f87171",
+    icon: (
+      <svg viewBox="0 0 48 56" className="h-full w-full" aria-hidden>
+        {/* Body silhouette */}
+        <path d="M 10 14 Q 10 6 24 6 Q 38 6 38 14 L 40 50 Q 38 54 24 54 Q 10 54 8 50 Z"
+          fill="rgba(248,113,113,0.05)" stroke="rgba(248,113,113,0.2)" strokeWidth="0.8" />
+        {/* Pericardial window */}
+        <ellipse cx="24" cy="20" rx="6" ry="5" fill="rgba(248,113,113,0.12)" stroke="rgba(248,113,113,0.5)" strokeWidth="0.6" />
+        {/* Heart icon inside */}
+        <path d="M 22 19 Q 22 17 24 18 Q 26 17 26 19 Q 26 21 24 23 Q 22 21 22 19"
+          fill="rgba(248,113,113,0.6)" />
+        {/* Fluid pockets */}
+        <ellipse cx="16" cy="32" rx="4" ry="3" fill="rgba(79,195,247,0.25)" stroke="rgba(79,195,247,0.5)" strokeWidth="0.5" />
+        <ellipse cx="32" cy="34" rx="4" ry="3" fill="rgba(79,195,247,0.25)" stroke="rgba(79,195,247,0.5)" strokeWidth="0.5" />
+        <ellipse cx="24" cy="44" rx="5" ry="3" fill="rgba(79,195,247,0.25)" stroke="rgba(79,195,247,0.5)" strokeWidth="0.5" />
+        {/* Alert badge */}
+        <circle cx="38" cy="12" r="6" fill="rgba(248,113,113,0.2)" stroke="rgba(248,113,113,0.8)" strokeWidth="0.7" />
+        <text x="38" y="14" textAnchor="middle" fontSize="7" fill="rgba(248,113,113,1)" fontFamily="monospace" fontWeight="bold">!</text>
+        {/* Fluid label */}
+        <text x="24" y="40" textAnchor="middle" fontSize="3.5" fill="rgba(79,195,247,0.7)" fontFamily="monospace">FREE FLUID</text>
+      </svg>
+    ),
+    tags: ["Pericardial window", "Perihepatic · perisplenic", "Pelvic free fluid", "Pathology flags", "Specialist referral alerts"],
+  },
+];
+
 export function Capabilities() {
   const { t } = useLocale();
 
@@ -83,25 +169,72 @@ export function Capabilities() {
           </div>
         </div>
 
-        {/* Bento — 2 cols on mobile, 6 cols on desktop */}
-        <div className="mt-5 grid grid-cols-2 gap-3 md:mt-20 md:gap-5 lg:grid-cols-6 lg:grid-rows-2">
+        {/* ── Mobile: 3 grouped cards ── */}
+        <div className="mt-5 grid grid-cols-1 gap-3 md:hidden">
+          {MOBILE_GROUPS.map((group, i) => (
+            <Reveal key={group.title} delay={i * 100}>
+              <article
+                className="relative overflow-hidden rounded-[1rem] border border-hairline bg-bg-elev-1/60 p-4"
+                style={{ borderColor: `${group.color}22` }}
+              >
+                <div className="flex items-start gap-4">
+                  {/* Icon */}
+                  <div className="relative h-[72px] w-[60px] shrink-0">
+                    {group.icon}
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="font-mono text-[9px] uppercase tracking-[0.22em]" style={{ color: `${group.color}99` }}>
+                      {group.label}
+                    </div>
+                    <h3 className="mt-0.5 text-[14px] font-medium leading-tight tracking-tight text-fg">
+                      {group.title}
+                    </h3>
+                    {/* Tag pills */}
+                    <div className="mt-2 flex flex-wrap gap-1">
+                      {group.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border px-2 py-0.5 font-mono text-[9px] leading-none"
+                          style={{ borderColor: `${group.color}33`, color: `${group.color}cc`, background: `${group.color}0a` }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Subtle corner glow */}
+                <div
+                  className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 rounded-full opacity-20 blur-2xl"
+                  style={{ background: group.color }}
+                />
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* ── Desktop: bento 6-column grid ── */}
+        <div className="mt-20 hidden gap-5 md:grid lg:grid-cols-6 lg:grid-rows-2" style={{ gridTemplateColumns: "repeat(6, 1fr)" }}>
           {t.capabilities.items.map((item, i) => {
             const Silhouette = SILHOUETTES[i];
             const spanClass = ["lg:col-span-2","lg:col-span-2","lg:col-span-2","lg:col-span-3","lg:col-span-2","lg:col-span-1"][i];
             return (
               <Reveal key={item.title} delay={i * 80}>
-                <article className={`group relative flex h-full flex-col overflow-hidden rounded-[1rem] border border-hairline bg-bg-elev-1/60 p-3 transition-all duration-700 hover:border-hairline-strong hover:bg-bg-elev-1 md:p-7 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] ${spanClass}`}>
+                <article className={`group relative flex h-full flex-col overflow-hidden rounded-[1rem] border border-hairline bg-bg-elev-1/60 p-7 transition-all duration-700 hover:border-hairline-strong hover:bg-bg-elev-1 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] ${spanClass}`}>
                   <Spotlight size={320} />
-                  <div className="relative z-10 h-12 overflow-hidden md:h-24">
+                  <div className="relative z-10 h-24 overflow-hidden">
                     {Silhouette ? <Silhouette /> : null}
                   </div>
-                  <h3 className="relative z-10 mt-2 text-[13px] font-medium leading-tight tracking-tight text-fg md:mt-5 md:text-[19px]">
+                  <h3 className="relative z-10 mt-5 text-[19px] font-medium leading-tight tracking-tight text-fg">
                     {item.title}
                   </h3>
-                  <p className="relative z-10 text-body mt-1 text-[11px] leading-snug md:mt-2.5 md:text-[13.5px]">
+                  <p className="relative z-10 text-body mt-2.5 text-[13.5px]">
                     {item.body}
                   </p>
-                  <div className="absolute right-3 top-3 z-10 font-mono text-[8px] uppercase tracking-[0.2em] text-fg-ghost transition-colors duration-500 group-hover:text-fg-mute md:right-4 md:top-4 md:text-[9.5px]">
+                  <div className="absolute right-4 top-4 z-10 font-mono text-[9.5px] uppercase tracking-[0.2em] text-fg-ghost transition-colors duration-500 group-hover:text-fg-mute">
                     {String(i + 1).padStart(2, "0")}
                   </div>
                 </article>
