@@ -139,6 +139,30 @@ export const dict = {
           body: "Structured alerts for findings that warrant specialist referral.",
         },
       ],
+      groups: [
+        {
+          label: "Abdominal",
+          title: "Abdominal Organs",
+          tags: ["Liver echogenicity", "Kidney morphology", "Bladder volume", "Hydronephrosis", "Free fluid (Morison's)"],
+        },
+        {
+          label: "Obstetrics",
+          title: "Fetal Development",
+          tags: ["Gestational age", "BPD · HC · AC · FL", "Heart rate", "Growth curves", "Presentation"],
+        },
+        {
+          label: "Emergency",
+          title: "FAST & Pathology",
+          tags: ["Pericardial window", "Perihepatic · perisplenic", "Pelvic free fluid", "Pathology flags", "Specialist referral alerts"],
+        },
+      ],
+      svgLabels: {
+        liver: "LIVER",
+        kidneys: "KIDNEYS",
+        bladder: "BLADDER",
+        hr: "HR",
+        fluid: "FREE FLUID",
+      },
     },
 
     kit: {
@@ -403,6 +427,30 @@ export const dict = {
           body: "Avisos estructurados para hallazgos que requieren referencia a especialista.",
         },
       ],
+      groups: [
+        {
+          label: "Abdominal",
+          title: "Órganos abdominales",
+          tags: ["Ecogenicidad hepática", "Morfología renal", "Volumen vesical", "Hidronefrosis", "Líquido libre (Morison)"],
+        },
+        {
+          label: "Obstetricia",
+          title: "Desarrollo fetal",
+          tags: ["Edad gestacional", "DBP · CC · CA · LF", "Frecuencia cardíaca", "Curvas de crecimiento", "Presentación"],
+        },
+        {
+          label: "Emergencia",
+          title: "FAST y Patología",
+          tags: ["Ventana pericárdica", "Perihepático · periesplénico", "Líquido pélvico libre", "Alertas de patología", "Alerta a especialista"],
+        },
+      ],
+      svgLabels: {
+        liver: "HÍGADO",
+        kidneys: "RIÑONES",
+        bladder: "VEJIGA",
+        hr: "FC",
+        fluid: "LÍQ. LIBRE",
+      },
     },
 
     kit: {
