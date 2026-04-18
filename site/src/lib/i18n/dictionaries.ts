@@ -20,7 +20,7 @@ export const dict = {
       eyebrow: "Kainos Medical · Alethia",
       titleA: "The old ultrasound,",
       titleB: "reborn with AI.",
-      body: "Alethia turns the ultrasound machines hospitals already own into real-time diagnostic assistants. A tablet, a capture device, and a fine-tuned medical AI — built for the doctor who sees the patient first.",
+      body: "Alethia turns the ultrasound machines hospitals already own into real-time diagnostic assistants. A tablet, a capture device, and a fine-tuned medical AI, built for the doctor who sees the patient first.",
       primary: "Request investor deck",
       secondary: "See how it works",
       pill: "In development · First pilots 2026",
@@ -31,7 +31,7 @@ export const dict = {
       title: "The first doctor rarely has the right eyes.",
       titleLead: "The right doctor is rarely ",
       titleTail: "the first doctor.",
-      body: "In emergency rooms and rural clinics across the world, the doctor on call is often a generalist — not a radiologist or sonographer. The equipment exists. The expertise does not.",
+      body: "In emergency rooms and rural clinics across the world, the doctor on call is often a generalist, not a radiologist or sonographer. The equipment exists. The expertise does not.",
       stats: [
         {
           value: "2/3",
@@ -40,7 +40,7 @@ export const dict = {
         },
         {
           value: "1.9M",
-          label: "stillbirths occur every year — most from conditions an ultrasound could have detected",
+          label: "stillbirths occur every year, most from conditions an ultrasound could have detected",
           source: "WHO / The Lancet Stillbirths Series",
         },
         {
@@ -50,7 +50,7 @@ export const dict = {
         },
         {
           value: "94%",
-          label: "specialist-level accuracy achieved by AI in medical imaging — without the geographic constraint",
+          label: "specialist-level accuracy achieved by AI in medical imaging, without the geographic constraint",
           source: "Lancet Digital Health, 2021",
         },
       ],
@@ -62,12 +62,12 @@ export const dict = {
       eyebrow: "The bridge",
       title: "Same machine.",
       titleHighlight: "Different eyes.",
-      body: "Alethia Kit sits between your existing ultrasound machine and the clinician. A video capture device reads the RGB output of any legacy ultrasound, streams it into a tablet running Alethia, and returns annotated imagery — live, on-screen, as the probe moves.",
+      body: "Alethia Kit sits between your existing ultrasound machine and the clinician. A video capture device reads the RGB output of any legacy ultrasound, streams it into a tablet running Alethia, and returns annotated imagery, live, on-screen, as the probe moves.",
       steps: [
         {
           number: "01",
           title: "Plug into what you have",
-          body: "The capture module connects to the VGA, DVI, or composite output of any ultrasound — no firmware integration, no manufacturer lock-in.",
+          body: "The capture module connects to the VGA, DVI, or composite output of any ultrasound, no firmware integration, no manufacturer lock-in.",
         },
         {
           number: "02",
@@ -77,7 +77,7 @@ export const dict = {
         {
           number: "03",
           title: "The clinician sees structure",
-          body: "Organs, pathology, fetal measurements, free fluid — rendered live over the scan with confidence indicators.",
+          body: "Organs, pathology, fetal measurements, free fluid, rendered live over the scan with confidence indicators.",
         },
       ],
     },
@@ -87,7 +87,7 @@ export const dict = {
       title: "Three layers. One device.",
       titleLead: "Three layers. ",
       titleTail: "One device.",
-      body: "Alethia Kit is a single integrated product: Windows tablet (coming soon: iOS, Android & macOS), video capture, and the Alethia model — preinstalled, calibrated, and ready on arrival.",
+      body: "Alethia Kit is a single integrated product: Windows tablet (coming soon: iOS, Android & macOS), video capture, and the Alethia model, preinstalled, calibrated, and ready on arrival.",
       cards: [
         {
           title: "Capture",
@@ -112,7 +112,7 @@ export const dict = {
       title: "What Alethia sees.",
       titleLead: "What ",
       titleTail: "Alethia sees.",
-      body: "Trained and fine-tuned for the anatomies that matter in emergency and primary care. Not a general-purpose model — a focused one.",
+      body: "Trained and fine-tuned for the anatomies that matter in emergency and primary care. Not a general-purpose model, a focused one.",
       items: [
         {
           title: "Liver",
@@ -183,7 +183,7 @@ export const dict = {
         },
         {
           label: "Model",
-          title: "Alethia — preinstalled",
+          title: "Alethia, preinstalled",
           body: "Fine-tuned medical vision model. Updates over the air. On-device inference.",
         },
       ],
@@ -194,7 +194,7 @@ export const dict = {
       title: "The Mobileye model, for medicine.",
       titleLead: "The Mobileye model,",
       titleTail: "for medicine.",
-      body: "Mobileye didn't replace the vehicle. It added AI vision to the one you already owned. Alethia does the same — turning the ultrasound machines hospitals already paid for into real-time diagnostic intelligence. No new equipment. No capital budget. Just a smarter machine.",
+      body: "Mobileye didn't replace the vehicle. It added AI vision to the one you already owned. Alethia does the same, turning the ultrasound machines hospitals already paid for into real-time diagnostic intelligence. No new equipment. No capital budget. Just a smarter machine.",
       markets: [
         {
           region: "Cost delta",
@@ -205,13 +205,13 @@ export const dict = {
         {
           region: "Installed base",
           stat: "500K+",
-          label: "Legacy ultrasound machines globally eligible for Alethia — the hardware is already there.",
+          label: "Legacy ultrasound machines globally eligible for Alethia, the hardware is already there.",
           source: "WFUMB · WHO",
         },
         {
           region: "The precedent",
           stat: "$15.3B",
-          label: "Intel's acquisition of Mobileye in 2017 — built on AI for existing hardware, not new vehicles.",
+          label: "Intel's acquisition of Mobileye in 2017, built on AI for existing hardware, not new vehicles.",
           source: "Intel press release, 2017",
         },
       ],
@@ -242,7 +242,7 @@ export const dict = {
       ],
       pitchTitle: "Why now",
       pitchPoints: [
-        "Legacy ultrasound is everywhere — the install base is already paid for.",
+        "Legacy ultrasound is everywhere, the install base is already paid for.",
         "The diagnostic gap is widening faster than new sonographers can be trained.",
         "On-device medical AI is finally fast enough and cheap enough for commodity tablets.",
         "Regulatory frameworks for AI-assisted diagnostic devices are maturing in 2025.",
@@ -255,7 +255,7 @@ export const dict = {
       title: "Talk to Kainos Medical.",
       titleLead: "Talk to ",
       titleTail: "Kainos Medical.",
-      body: "Investors, health systems, and clinical partners — drop a line. We reply to every serious inquiry within 72 hours.",
+      body: "Investors, health systems, and clinical partners, drop a line. We reply to every serious inquiry within 72 hours.",
       fields: {
         name: "Your name",
         role: "Role",
@@ -308,7 +308,7 @@ export const dict = {
       eyebrow: "Kainos Medical · Alethia",
       titleA: "El ultrasonido",
       titleB: "renace con la IA.",
-      body: "Alethia convierte los ultrasonidos que los hospitales ya tienen en asistentes diagnósticos en tiempo real. Una tableta, una capturadora de video y una IA médica fine-tuned — diseñada para el médico que ve al paciente primero.",
+      body: "Alethia convierte los ultrasonidos que los hospitales ya tienen en asistentes diagnósticos en tiempo real. Una tableta, una capturadora de video y una IA médica fine-tuned, diseñada para el médico que ve al paciente primero.",
       primary: "Solicitar deck para inversores",
       secondary: "Cómo funciona",
       pill: "En desarrollo · Primeros pilotos 2026",
@@ -319,7 +319,7 @@ export const dict = {
       title: "El médico correcto rara vez es el primero.",
       titleLead: "El médico correcto rara vez es ",
       titleTail: "el primero.",
-      body: "En urgencias y clínicas rurales alrededor del mundo, quien recibe al paciente suele ser un médico general — no un radiólogo ni un especialista en ultrasonido. El equipo existe. La experiencia no.",
+      body: "En urgencias y clínicas rurales alrededor del mundo, quien recibe al paciente suele ser un médico general, no un radiólogo ni un especialista en ultrasonido. El equipo existe. La experiencia no.",
       stats: [
         {
           value: "2/3",
@@ -328,7 +328,7 @@ export const dict = {
         },
         {
           value: "1.9M",
-          label: "bebés nacen muertos cada año — la mayoría por condiciones que un ultrasonido pudo haber detectado",
+          label: "bebés nacen muertos cada año, la mayoría por condiciones que un ultrasonido pudo haber detectado",
           source: "OMS / The Lancet Stillbirths Series",
         },
         {
@@ -338,7 +338,7 @@ export const dict = {
         },
         {
           value: "94%",
-          label: "precisión de nivel especialista lograda por IA en imágenes médicas — sin restricción geográfica",
+          label: "precisión de nivel especialista lograda por IA en imágenes médicas, sin restricción geográfica",
           source: "Lancet Digital Health, 2021",
         },
       ],
@@ -350,12 +350,12 @@ export const dict = {
       eyebrow: "El puente",
       title: "La misma máquina.",
       titleHighlight: "Potenciada con la IA.",
-      body: "Alethia Kit se conecta al ultrasonido existente. Una capturadora lee la salida RGB y envía la señal a la IA — todo en tiempo real, con identificación de órganos y enfermedades mientras el médico explora.",
+      body: "Alethia Kit se conecta al ultrasonido existente. Una capturadora lee la salida RGB y envía la señal a la IA, todo en tiempo real, con identificación de órganos y enfermedades mientras el médico explora.",
       steps: [
         {
           number: "01",
           title: "Conéctalo a lo que ya tienes",
-          body: "El módulo captura la salida VGA, DVI o compuesta de cualquier ultrasonido — sin integración de firmware, sin depender del fabricante.",
+          body: "El módulo captura la salida VGA, DVI o compuesta de cualquier ultrasonido, sin integración de firmware, sin depender del fabricante.",
         },
         {
           number: "02",
@@ -365,7 +365,7 @@ export const dict = {
         {
           number: "03",
           title: "El clínico ve estructura",
-          body: "Órganos, patologías, mediciones fetales, líquido libre — renderizados en vivo sobre la imagen con indicadores de confianza.",
+          body: "Órganos, patologías, mediciones fetales, líquido libre, renderizados en vivo sobre la imagen con indicadores de confianza.",
         },
       ],
     },
@@ -375,7 +375,7 @@ export const dict = {
       title: "Tres capas. Un dispositivo.",
       titleLead: "Tres capas. ",
       titleTail: "Un dispositivo.",
-      body: "Alethia Kit es un producto integrado: tableta Windows (próximamente iOS, Android y macOS), capturadora de video y el modelo Alethia — preinstalado, calibrado y listo para usarse al llegar.",
+      body: "Alethia Kit es un producto integrado: tableta Windows (próximamente iOS, Android y macOS), capturadora de video y el modelo Alethia, preinstalado, calibrado y listo para usarse al llegar.",
       cards: [
         {
           title: "Captura",
@@ -389,7 +389,7 @@ export const dict = {
         },
         {
           title: "Asistencia",
-          body: "Overlays, alertas y notas estructuradas automáticas. Se integra al flujo del clínico — nunca lo reemplaza.",
+          body: "Overlays, alertas y notas estructuradas automáticas. Se integra al flujo del clínico, nunca lo reemplaza.",
           meta: "Interfaz",
         },
       ],
@@ -400,7 +400,7 @@ export const dict = {
       title: "Lo que Alethia ve.",
       titleLead: "Lo que ",
       titleTail: "Alethia ve.",
-      body: "Entrenada y ajustada sobre las anatomías que importan en urgencias y atención primaria. No es un modelo general — es uno focalizado.",
+      body: "Entrenada y ajustada sobre las anatomías que importan en urgencias y atención primaria. No es un modelo general, es uno focalizado.",
       items: [
         {
           title: "Hígado",
@@ -471,7 +471,7 @@ export const dict = {
         },
         {
           label: "Modelo",
-          title: "Alethia — preinstalada",
+          title: "Alethia, preinstalada",
           body: "Modelo de visión médica fine-tuned. Actualizaciones over-the-air. Inferencia en el dispositivo.",
         },
       ],
@@ -482,7 +482,7 @@ export const dict = {
       title: "El modelo Mobileye, para la medicina.",
       titleLead: "El modelo Mobileye,",
       titleTail: "para la medicina.",
-      body: "Mobileye no reemplazó el vehículo. Le añadió visión de IA al que ya tenías. Alethia hace lo mismo — convirtiendo los ultrasonidos que los hospitales ya pagaron en asistentes de diagnóstico en tiempo real. Sin equipo nuevo. Sin presupuesto de capital. Solo una máquina más inteligente.",
+      body: "Mobileye no reemplazó el vehículo. Le añadió visión de IA al que ya tenías. Alethia hace lo mismo, convirtiendo los ultrasonidos que los hospitales ya pagaron en asistentes de diagnóstico en tiempo real. Sin equipo nuevo. Sin presupuesto de capital. Solo una máquina más inteligente.",
       markets: [
         {
           region: "Diferencia de costo",
@@ -493,13 +493,13 @@ export const dict = {
         {
           region: "Base instalada",
           stat: "500K+",
-          label: "Ultrasonidos legacy globalmente elegibles para Alethia — el hardware ya está ahí.",
+          label: "Ultrasonidos legacy globalmente elegibles para Alethia, el hardware ya está ahí.",
           source: "WFUMB · OMS",
         },
         {
           region: "El precedente",
           stat: "$15.3B",
-          label: "Adquisición de Mobileye por Intel en 2017 — construido sobre IA para hardware existente, no vehículos nuevos.",
+          label: "Adquisición de Mobileye por Intel en 2017, construido sobre IA para hardware existente, no vehículos nuevos.",
           source: "Intel press release, 2017",
         },
       ],
@@ -530,7 +530,7 @@ export const dict = {
       ],
       pitchTitle: "Por qué ahora",
       pitchPoints: [
-        "El ultrasonido antiguo está en todas partes — la base instalada ya está pagada.",
+        "El ultrasonido antiguo está en todas partes, la base instalada ya está pagada.",
         "La brecha diagnóstica crece más rápido de lo que se forman sonografistas.",
         "La IA médica en el dispositivo por fin es lo suficientemente rápida y barata para tabletas estándar.",
         "Los marcos regulatorios para dispositivos diagnósticos asistidos por IA están madurando en 2025.",
@@ -543,7 +543,7 @@ export const dict = {
       title: "Habla con Kainos Medical.",
       titleLead: "Habla con ",
       titleTail: "Kainos Medical.",
-      body: "Inversores, sistemas de salud y socios clínicos — escríbenos. Respondemos cada consulta seria en menos de 72 horas.",
+      body: "Inversores, sistemas de salud y socios clínicos, escríbenos. Respondemos cada consulta seria en menos de 72 horas.",
       fields: {
         name: "Nombre",
         role: "Rol",
