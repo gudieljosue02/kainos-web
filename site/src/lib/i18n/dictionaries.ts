@@ -29,9 +29,9 @@ export const dict = {
     problem: {
       eyebrow: "The gap",
       title: "The first doctor rarely has the right eyes.",
-      titleLead: "The first doctor rarely has ",
-      titleTail: "the right eyes.",
-      body: "In emergency rooms and rural clinics across Latin America and Africa, the doctor triaging a trauma patient is often a generalist — not a radiologist or sonographer. The equipment exists. The expertise does not.",
+      titleLead: "The right doctor is rarely ",
+      titleTail: "the first doctor.",
+      body: "In emergency rooms and rural clinics across the world, the doctor triaging a patient is often a generalist — not a radiologist or sonographer. The equipment exists. The expertise does not.",
       stats: [
         {
           value: "2/3",
@@ -292,9 +292,9 @@ export const dict = {
 
     problem: {
       eyebrow: "La brecha",
-      title: "El primer médico rara vez tiene los ojos adecuados.",
-      titleLead: "El primer médico rara vez tiene ",
-      titleTail: "los ojos adecuados.",
+      title: "El médico correcto rara vez es el primero.",
+      titleLead: "El médico correcto rara vez es ",
+      titleTail: "el primero.",
       body: "En urgencias y clínicas rurales en Latinoamérica y África, quien recibe al paciente suele ser un médico general — no un radiólogo ni un especialista en ultrasonido. El equipo existe. La experiencia no.",
       stats: [
         {
