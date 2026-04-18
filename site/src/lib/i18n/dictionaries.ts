@@ -31,7 +31,7 @@ export const dict = {
       title: "The first doctor rarely has the right eyes.",
       titleLead: "The right doctor is rarely ",
       titleTail: "the first doctor.",
-      body: "In emergency rooms and rural clinics across the world, the doctor triaging a patient is often a generalist — not a radiologist or sonographer. The equipment exists. The expertise does not.",
+      body: "In emergency rooms and rural clinics across the world, the doctor on call is often a generalist — not a radiologist or sonographer. The equipment exists. The expertise does not.",
       stats: [
         {
           value: "2/3",
