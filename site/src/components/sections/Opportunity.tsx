@@ -64,9 +64,9 @@ export function Opportunity() {
 
         {/* Why now + CTA */}
         <div className="mt-5 shell md:mt-20">
-          <div className="shell-inner grid grid-cols-1 gap-0 lg:grid-cols-12">
+          <div className="shell-inner flex flex-col lg:flex-row">
             {/* Left: why now */}
-            <div className="border-b border-hairline p-4 md:p-8 lg:col-span-7 lg:border-b-0 lg:border-r lg:p-12">
+            <div className="border-b border-hairline p-4 md:p-8 lg:border-b-0 lg:border-r lg:p-12" style={{ flex: "0 0 58%" }}>
               <h3 className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent md:text-[11px]">
                 {t.opportunity.pitchTitle}
               </h3>
@@ -83,7 +83,7 @@ export function Opportunity() {
             </div>
 
             {/* Right: CTA block */}
-            <div className="relative flex flex-col justify-between gap-4 p-4 md:gap-6 md:p-8 lg:col-span-5 lg:p-12">
+            <div className="relative flex flex-col justify-between gap-4 p-4 md:gap-6 md:p-8 lg:p-12" style={{ flex: "1 1 42%" }}>
               <div className="absolute inset-0 opacity-[0.5] [background:radial-gradient(ellipse_at_top_right,rgba(79,195,247,0.12)_0%,transparent_60%)]" />
               <div className="relative">
                 <h3 className="h-section text-2xl md:text-3xl lg:text-4xl">
