@@ -45,24 +45,24 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative isolate overflow-hidden py-28 md:py-40"
+      className="relative isolate overflow-hidden py-5 md:py-28 lg:py-40"
     >
-      <div className="mx-auto w-full max-w-7xl px-5 md:px-8">
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
+      <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
+        <div className="grid grid-cols-1 gap-3 md:gap-14 lg:grid-cols-12 lg:gap-16">
           {/* Left: header + copy */}
           <div className="lg:col-span-5">
             <Reveal>
-              <div className="eyebrow mb-6">
+              <div className="eyebrow mb-3 md:mb-6">
                 <span className="eyebrow-dot" />
                 {t.contact.eyebrow}
               </div>
             </Reveal>
-            <Reveal as="h2" className="h-section text-[2.25rem] sm:text-5xl md:text-6xl">
+            <Reveal as="h2" className="h-section text-[1.6rem] sm:text-[2.25rem] md:text-5xl lg:text-6xl">
               {t.contact.titleLead}
               <ScanReveal text={t.contact.titleTail} />
             </Reveal>
             <Reveal delay={120}>
-              <p className="text-body mt-7 max-w-md text-lg">
+              <p className="text-body mt-2 max-w-md text-[13.5px] md:mt-7 md:text-lg">
                 {t.contact.body}
               </p>
             </Reveal>
@@ -72,10 +72,10 @@ export function Contact() {
           <div className="lg:col-span-7">
             <Reveal>
               <div className="shell">
-                <div className="shell-inner p-6 md:p-10">
+                <div className="shell-inner p-3 md:p-6 lg:p-10">
                   <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="flex flex-col gap-5"
+                    className="flex flex-col gap-3 md:gap-5"
                     noValidate
                   >
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-2">

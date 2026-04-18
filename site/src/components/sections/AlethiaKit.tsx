@@ -8,43 +8,43 @@ export function AlethiaKit() {
   const { t } = useLocale();
 
   return (
-    <section id="kit" className="relative isolate overflow-hidden py-28 md:py-40">
-      <div className="mx-auto w-full max-w-7xl px-5 md:px-8">
-        <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-12 lg:gap-16">
+    <section id="kit" className="relative isolate overflow-hidden py-5 md:py-28 lg:py-40">
+      <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
+        <div className="grid grid-cols-1 items-start gap-3 md:gap-14 lg:grid-cols-12 lg:gap-16">
           {/* Left — copy */}
           <div className="lg:col-span-5 lg:pt-12">
             <Reveal>
-              <div className="eyebrow mb-6">
+              <div className="eyebrow mb-3 md:mb-6">
                 <span className="eyebrow-dot" />
                 {t.kit.eyebrow}
               </div>
             </Reveal>
-            <Reveal as="h2" className="h-section text-[2.5rem] sm:text-5xl md:text-6xl">
+            <Reveal as="h2" className="h-section text-[1.6rem] sm:text-[2.25rem] md:text-5xl lg:text-6xl">
               {t.kit.title}
             </Reveal>
             <Reveal delay={100}>
-              <p className="mt-5 text-xl leading-tight tracking-tight text-fg-dim">
+              <p className="mt-2 text-[14px] leading-tight tracking-tight text-fg-dim md:mt-5 md:text-xl">
                 {t.kit.subtitle}
               </p>
             </Reveal>
             <Reveal delay={160}>
-              <p className="text-body mt-6 max-w-lg text-[15.5px]">
+              <p className="text-body mt-2 max-w-lg text-[13px] md:mt-6 md:text-[15.5px]">
                 {t.kit.body}
               </p>
             </Reveal>
 
-            <ul className="mt-10 space-y-4">
+            <ul className="mt-4 space-y-0 md:mt-10 md:space-y-4">
               {t.kit.parts.map((part, i) => (
                 <Reveal key={part.label} delay={220 + i * 80}>
-                  <li className="group flex items-start gap-4 border-t border-hairline pt-5">
-                    <span className="mt-1 font-mono text-[11px] uppercase tracking-[0.22em] text-accent min-w-[70px]">
+                  <li className="group flex items-start gap-3 border-t border-hairline pt-3 md:gap-4 md:pt-5">
+                    <span className="mt-0.5 min-w-[60px] font-mono text-[10px] uppercase tracking-[0.22em] text-accent md:min-w-[70px] md:text-[11px]">
                       {part.label}
                     </span>
                     <div>
-                      <div className="text-[16px] font-medium tracking-tight text-fg">
+                      <div className="text-[13px] font-medium tracking-tight text-fg md:text-[16px]">
                         {part.title}
                       </div>
-                      <p className="text-body mt-1 text-[13.5px]">
+                      <p className="text-body mt-0.5 text-[11.5px] md:mt-1 md:text-[13.5px]">
                         {part.body}
                       </p>
                     </div>
@@ -54,8 +54,8 @@ export function AlethiaKit() {
             </ul>
           </div>
 
-          {/* Right — visual composition of the Kit */}
-          <div className="lg:col-span-7">
+          {/* Right — visual composition of the Kit (hidden on mobile to save space) */}
+          <div className="hidden lg:col-span-7 lg:block">
             <Reveal>
               <div className="shell">
                 <div className="shell-inner relative overflow-hidden p-6 md:p-10">
