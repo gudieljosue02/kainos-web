@@ -38,7 +38,7 @@ export function ScanReveal({ text, className, delay = 0 }: ScanRevealProps) {
   }, [delay]);
 
   return (
-    <span ref={ref} className={cn("relative inline-block", className)}>
+    <span ref={ref} className={cn("relative inline-block whitespace-nowrap", className)}>
       {active ? (
         <LetterReveal text={text} delay={0} stagger={60} duration={350} />
       ) : (
