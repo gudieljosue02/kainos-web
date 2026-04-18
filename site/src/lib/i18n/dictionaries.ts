@@ -248,6 +248,9 @@ export const dict = {
         "Regulatory frameworks for AI-assisted diagnostic devices are maturing in 2025.",
       ],
       cta: "Request investor deck",
+      talkTitle: "Let's talk.",
+      talkBody: "Early-stage conversations with mission-aligned investors and health-system partners.",
+      talkNote: "Deck available under mutual NDA",
     },
 
     contact: {
@@ -536,6 +539,9 @@ export const dict = {
         "Los marcos regulatorios para dispositivos diagnósticos asistidos por IA están madurando en 2025.",
       ],
       cta: "Solicitar deck para inversores",
+      talkTitle: "Hablemos.",
+      talkBody: "Conversaciones en etapa temprana con inversores y socios de sistemas de salud alineados con la misión.",
+      talkNote: "Deck disponible bajo NDA mutuo",
     },
 
     contact: {

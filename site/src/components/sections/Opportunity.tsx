@@ -87,11 +87,10 @@ export function Opportunity() {
               <div className="absolute inset-0 opacity-[0.5] [background:radial-gradient(ellipse_at_top_right,rgba(79,195,247,0.12)_0%,transparent_60%)]" />
               <div className="relative">
                 <h3 className="h-section text-2xl md:text-3xl lg:text-4xl">
-                  Let&apos;s talk.
+                  {t.opportunity.talkTitle}
                 </h3>
                 <p className="text-body mt-2 max-w-sm text-[12.5px] md:mt-4 md:text-[15px]">
-                  Early-stage conversations with mission-aligned investors and
-                  health-system partners for LATAM and Africa.
+                  {t.opportunity.talkBody}
                 </p>
               </div>
               <div className="relative flex flex-col gap-2 md:gap-3">
@@ -104,7 +103,7 @@ export function Opportunity() {
                   </a>
                 </Magnetic>
                 <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-fg-mute md:text-[10px]">
-                  Deck available under mutual NDA
+                  {t.opportunity.talkNote}
                 </p>
               </div>
             </div>
