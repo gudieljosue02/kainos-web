@@ -70,7 +70,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const value = useMemo<LocaleContextValue>(
     () => ({
       locale,
-      t: dict[locale],
+      t: dict[locale] as Dict,
       setLocale,
       toggle,
     }),
