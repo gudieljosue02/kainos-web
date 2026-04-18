@@ -87,7 +87,7 @@ export const dict = {
       title: "Three layers. One device.",
       titleLead: "Three layers. ",
       titleTail: "One device.",
-      body: "Alethia Kit is a single integrated product: Windows tablet, video capture, and the Alethia model — preinstalled, calibrated, and ready on arrival.",
+      body: "Alethia Kit is a single integrated product: Windows tablet (coming soon: iOS, Android & macOS), video capture, and the Alethia model — preinstalled, calibrated, and ready on arrival.",
       cards: [
         {
           title: "Capture",
@@ -351,7 +351,7 @@ export const dict = {
       title: "Tres capas. Un dispositivo.",
       titleLead: "Tres capas. ",
       titleTail: "Un dispositivo.",
-      body: "Alethia Kit es un producto integrado: tableta Windows, capturadora de video y el modelo Alethia — preinstalado, calibrado y listo para usarse al llegar.",
+      body: "Alethia Kit es un producto integrado: tableta Windows (próximamente iOS, Android y macOS), capturadora de video y el modelo Alethia — preinstalado, calibrado y listo para usarse al llegar.",
       cards: [
         {
           title: "Captura",
