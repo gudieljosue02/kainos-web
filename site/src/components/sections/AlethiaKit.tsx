@@ -35,25 +35,39 @@ export function AlethiaKit() {
               </p>
             </Reveal>
 
-            <ul className="mt-4 space-y-0 md:mt-10 md:space-y-4">
+            {/* Mobile: vertical list */}
+            <ul className="mt-4 space-y-0 md:hidden">
               {t.kit.parts.map((part, i) => (
                 <Reveal key={part.label} delay={220 + i * 80}>
-                  <li className="group flex items-start gap-3 border-t border-hairline pt-3 md:gap-4 md:pt-5">
-                    <span className="mt-0.5 min-w-[60px] font-mono text-[10px] uppercase tracking-[0.22em] text-accent md:min-w-[70px] md:text-[11px]">
+                  <li className="flex items-start gap-3 border-t border-hairline pt-3">
+                    <span className="mt-0.5 min-w-[60px] font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
                       {part.label}
                     </span>
                     <div>
-                      <div className="text-[13px] font-medium tracking-tight text-fg md:text-[16px]">
-                        {part.title}
-                      </div>
-                      <p className="text-body mt-0.5 text-[11.5px] md:mt-1 md:text-[13.5px]">
-                        {part.body}
-                      </p>
+                      <div className="text-[13px] font-medium tracking-tight text-fg">{part.title}</div>
+                      <p className="text-body mt-0.5 text-[11.5px]">{part.body}</p>
                     </div>
                   </li>
                 </Reveal>
               ))}
             </ul>
+
+            {/* Desktop: horizontal 3-col cards */}
+            <div className="mt-10 hidden grid-cols-3 gap-4 md:grid">
+              {t.kit.parts.map((part, i) => (
+                <Reveal key={part.label} delay={220 + i * 80}>
+                  <div className="flex h-full flex-col rounded-[0.875rem] border border-hairline bg-bg-elev-2/60 p-4 transition-colors duration-500 hover:border-hairline-strong hover:bg-bg-elev-2">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                      {part.label}
+                    </span>
+                    <div className="mt-2 text-[14.5px] font-medium tracking-tight text-fg">
+                      {part.title}
+                    </div>
+                    <p className="text-body mt-1.5 text-[12.5px] leading-snug">{part.body}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
 
           {/* Right — mobile: clean stacked visual */}
