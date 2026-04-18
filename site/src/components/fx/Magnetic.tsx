@@ -18,8 +18,8 @@ type MagneticProps = {
  */
 export function Magnetic({
   children,
-  radius = 120,
-  strength = 0.35,
+  radius = 80,
+  strength = 0.18,
   className,
 }: MagneticProps) {
   const hostRef = useRef<HTMLSpanElement | null>(null);
@@ -77,12 +77,12 @@ export function Magnetic({
       raf = requestAnimationFrame(loop);
     };
 
-    window.addEventListener("pointermove", onMove);
-    window.addEventListener("pointerleave", onLeave);
+    host.addEventListener("pointermove", onMove);
+    host.addEventListener("pointerleave", onLeave);
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerleave", onLeave);
+      host.removeEventListener("pointermove", onMove);
+      host.removeEventListener("pointerleave", onLeave);
     };
   }, [radius, strength]);
 
