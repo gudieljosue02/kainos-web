@@ -56,13 +56,20 @@ export function AlethiaKit() {
             </ul>
           </div>
 
-          {/* Right — visual composition of the Kit */}
+          {/* Right — mobile: clean stacked visual */}
           <div className="lg:col-span-7">
             <Reveal>
               <div className="shell">
-                <div className="shell-inner relative overflow-hidden p-6 md:p-10">
+                <div className="shell-inner relative overflow-hidden p-4 md:p-10">
                   <div className="ambient-grid absolute inset-0 opacity-40" />
-                  <KitRender />
+                  {/* Mobile visual */}
+                  <div className="md:hidden">
+                    <KitRenderMobile />
+                  </div>
+                  {/* Desktop visual */}
+                  <div className="hidden md:block">
+                    <KitRender />
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -70,6 +77,46 @@ export function AlethiaKit() {
         </div>
       </div>
     </section>
+  );
+}
+
+/** Clean mobile version — no absolute positioning, no overlapping callouts */
+function KitRenderMobile() {
+  return (
+    <div className="flex flex-col gap-3">
+      {/* Tablet frame */}
+      <div className="relative w-full overflow-hidden rounded-[16px] border border-white/10 bg-gradient-to-br from-[#14202e] to-[#0a1220] p-2 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.5)]">
+        {/* Camera notch */}
+        <div className="mb-1.5 flex justify-center">
+          <span className="h-1 w-4 rounded-full bg-white/10" />
+        </div>
+        {/* Screen */}
+        <div className="relative overflow-hidden rounded-[10px] border border-white/5 bg-[#020509]">
+          <UltrasoundVisual className="w-full rounded-[10px]" withScan withAnnotations />
+          <div className="absolute left-2 top-2 flex items-center gap-1.5 rounded-full border border-white/10 bg-black/50 px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.2em] text-white/70 backdrop-blur-[4px]">
+            <span className="h-1 w-1 rounded-full bg-[#4fc3f7] animate-pulse" />
+            Alethia Kit · live
+          </div>
+        </div>
+      </div>
+
+      {/* Component chips */}
+      <div className="grid grid-cols-3 gap-2">
+        {[
+          { label: "Tablet", sub: "Rugged · Windows", dot: "#4fc3f7" },
+          { label: "Capture", sub: "VGA · DVI · S-Video", dot: "#4fc3f7" },
+          { label: "Model", sub: "On-device · OTA", dot: "#4fc3f7" },
+        ].map((c) => (
+          <div key={c.label} className="flex flex-col gap-1 rounded-[8px] border border-hairline bg-white/[0.02] p-2">
+            <div className="flex items-center gap-1">
+              <span className="h-1 w-1 rounded-full" style={{ background: c.dot, boxShadow: `0 0 4px ${c.dot}` }} />
+              <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#4fc3f7]/80">{c.label}</span>
+            </div>
+            <span className="text-[10px] leading-snug text-fg-mute">{c.sub}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
