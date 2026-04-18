@@ -72,15 +72,21 @@ export function Navigation() {
 
           {/* Right side */}
           <div className="ml-auto flex items-center gap-2">
-            {/* Locale toggle — always visible */}
+            {/* Locale toggle — segmented control */}
             <button
               type="button"
               onClick={toggle}
               aria-label={t.lang.label}
-              className="flex h-8 items-center gap-1.5 rounded-full border border-[#0a1428]/25 px-3 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-[#0a1428] transition-all duration-200 hover:border-[#0f2a54] hover:bg-[#0f2a54]/5"
+              className="relative flex h-7 items-center rounded-full border border-[#0a1428]/20 bg-[#0a1428]/[0.04] p-[3px] font-mono text-[11px] font-semibold uppercase tracking-[0.1em]"
             >
-              <Globe size={13} weight="regular" />
-              {locale === "en" ? "ES" : "EN"}
+              <span
+                className={cn(
+                  "absolute top-[3px] h-[calc(100%-6px)] w-[calc(50%-3px)] rounded-full bg-[#0a1428] shadow-sm transition-all duration-300 [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)]",
+                  locale === "en" ? "left-[3px]" : "left-[calc(50%)]"
+                )}
+              />
+              <span className={cn("relative z-10 w-8 text-center transition-colors duration-200", locale === "en" ? "text-white" : "text-[#0a1428]/50")}>EN</span>
+              <span className={cn("relative z-10 w-8 text-center transition-colors duration-200", locale === "es" ? "text-white" : "text-[#0a1428]/50")}>ES</span>
             </button>
 
             {/* CTA */}
