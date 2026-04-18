@@ -60,8 +60,8 @@ export const dict = {
 
     bridge: {
       eyebrow: "The bridge",
-      title: "We don't replace the ultrasound.",
-      titleHighlight: "We teach it to see.",
+      title: "Same machine.",
+      titleHighlight: "Different eyes.",
       body: "Alethia Kit sits between your existing ultrasound machine and the clinician. A video capture device reads the RGB output of any legacy ultrasound, streams it into a tablet running Alethia, and returns annotated imagery — live, on-screen, as the probe moves.",
       steps: [
         {
@@ -283,7 +283,7 @@ export const dict = {
     hero: {
       eyebrow: "Kainos Medical · Alethia",
       titleA: "El ultrasonido",
-      titleB: "renace gracias a la IA.",
+      titleB: "renace con la IA.",
       body: "Alethia convierte los ultrasonidos que los hospitales ya tienen en asistentes diagnósticos en tiempo real. Una tableta, una capturadora de video y una IA médica fine-tuned — diseñada para el médico que ve al paciente primero.",
       primary: "Solicitar deck para inversores",
       secondary: "Cómo funciona",
@@ -324,8 +324,8 @@ export const dict = {
 
     bridge: {
       eyebrow: "El puente",
-      title: "No reemplazamos el ultrasonido.",
-      titleHighlight: "Le enseñamos a ver.",
+      title: "La misma máquina.",
+      titleHighlight: "Una mirada diferente.",
       body: "Alethia Kit se coloca entre el ultrasonido existente y el clínico. Una capturadora lee la salida RGB de cualquier ultrasonido antiguo, envía la señal a una tableta con Alethia, y regresa imágenes anotadas — en vivo, mientras el médico explora con la sonda.",
       steps: [
         {
