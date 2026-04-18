@@ -44,7 +44,7 @@ export function Problem() {
             <Reveal key={stat.value + i} delay={i * 100}>
               <article className="group relative h-full overflow-hidden rounded-[1rem] border border-hairline bg-bg-elev-1/60 p-4 transition-all duration-500 hover:border-hairline-strong hover:bg-bg-elev-1 md:rounded-[1.25rem] md:p-7 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]">
                 <Spotlight />
-                <div className="relative z-10 metric text-3xl font-medium tracking-tighter text-fg md:text-5xl lg:text-[3.25rem]">
+                <div className="relative z-10 metric whitespace-nowrap text-[1.6rem] font-medium tracking-tighter text-fg md:text-5xl lg:text-[3.25rem]">
                   <Counter value={stat.value} />
                 </div>
                 <p className="relative z-10 text-body mt-2 text-[11.5px] leading-snug md:mt-5 md:text-[14.5px]">
