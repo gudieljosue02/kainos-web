@@ -3,6 +3,7 @@
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { Reveal } from "@/components/Reveal";
 import { Counter } from "@/components/Counter";
+import { Spotlight } from "@/components/fx/Spotlight";
 import { ScanReveal } from "@/components/fx/ScanReveal";
 
 export function Impact() {
@@ -32,32 +33,31 @@ export function Impact() {
           </div>
         </div>
 
-        {/* Markets list */}
-        <div className="mt-5 shell md:mt-20">
-          <div className="shell-inner overflow-hidden">
-            <ul className="divide-y divide-hairline">
-              {t.impact.markets.map((market, i) => (
-                <Reveal key={market.region} delay={i * 120}>
-                  <li className="group flex flex-row items-center justify-between gap-3 p-3 transition-colors duration-500 hover:bg-white/[0.015] md:p-7 lg:p-10 [transition-timing-function:cubic-bezier(0.32,0.72,0,1)]">
-                    <div>
-                      <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-fg-mute md:text-[10px]">
-                        {String(i + 1).padStart(2, "0")} · {market.region}
-                      </div>
-                      <p className="text-body mt-1 max-w-sm text-[12px] md:mt-3 md:text-[14.5px]">
-                        {market.label}
-                      </p>
-                      <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-fg-ghost md:mt-3 md:text-[10px]">
-                        {market.source}
-                      </div>
-                    </div>
-                    <div className="metric shrink-0 text-[2rem] font-medium tracking-tighter text-fg md:text-[2.75rem] lg:text-[3.5rem]">
-                      <Counter value={market.stat} />
-                    </div>
-                  </li>
-                </Reveal>
-              ))}
-            </ul>
-          </div>
+        {/* Stat cards — 2 cols mobile, 3 cols desktop */}
+        <div className="mt-5 grid grid-cols-2 gap-3 md:mt-20 md:grid-cols-3 md:gap-6">
+          {t.impact.markets.map((market, i) => (
+            <Reveal key={market.region} delay={i * 100}>
+              <article className="group relative h-full overflow-hidden rounded-[1rem] border border-hairline bg-bg-elev-1/60 p-4 transition-all duration-500 hover:border-hairline-strong hover:bg-bg-elev-1 md:rounded-[1.25rem] md:p-7 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]">
+                <Spotlight />
+                <div className="relative z-10 metric whitespace-nowrap text-[1.6rem] font-medium tracking-tighter text-fg md:text-[2.75rem] lg:text-[3.25rem]">
+                  <Counter value={market.stat} />
+                </div>
+                <div className="relative z-10 mt-1 font-mono text-[8.5px] uppercase tracking-[0.18em] text-accent md:mt-2 md:text-[9.5px]">
+                  {market.region}
+                </div>
+                <p className="relative z-10 text-body mt-2 text-[11.5px] leading-snug md:mt-4 md:text-[13.5px]">
+                  {market.label}
+                </p>
+                <div className="relative z-10 mt-3 flex items-center gap-1.5 border-t border-hairline pt-3 font-mono text-[8px] uppercase tracking-[0.18em] text-fg-mute md:mt-5 md:pt-4 md:text-[9px]">
+                  <span className="h-[1px] w-3 bg-fg-ghost" />
+                  {market.source}
+                </div>
+                <div className="pointer-events-none absolute -right-1/4 -top-1/4 h-[200%] w-[200%] opacity-0 transition-opacity duration-700 group-hover:opacity-100">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(79,195,247,0.08)_0%,transparent_50%)]" />
+                </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
