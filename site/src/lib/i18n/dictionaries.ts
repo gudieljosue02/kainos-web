@@ -282,8 +282,8 @@ export const dict = {
 
     hero: {
       eyebrow: "Kainos Medical · Alethia",
-      titleA: "El viejo ultrasonido,",
-      titleB: "renacido con IA.",
+      titleA: "El ultrasonido antiguo",
+      titleB: "renace gracias a la IA.",
       body: "Alethia convierte los ultrasonidos que los hospitales ya tienen en asistentes diagnósticos en tiempo real. Una tableta, una capturadora de video y una IA médica fine-tuned — diseñada para el médico que ve al paciente primero.",
       primary: "Solicitar deck para inversores",
       secondary: "Cómo funciona",
