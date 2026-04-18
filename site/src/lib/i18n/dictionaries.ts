@@ -191,9 +191,9 @@ export const dict = {
 
     impact: {
       eyebrow: "Impact",
-      title: "What Mobileye did for cars, we're doing for medicine.",
-      titleLead: "What Mobileye did for cars, ",
-      titleTail: "we're doing for medicine.",
+      title: "The Mobileye model, for medicine.",
+      titleLead: "The Mobileye model,",
+      titleTail: "for medicine.",
       body: "Mobileye didn't replace the vehicle. It added AI vision to the one you already owned. Alethia does the same — turning the ultrasound machines hospitals already paid for into real-time diagnostic intelligence. No new equipment. No capital budget. Just a smarter machine.",
       markets: [
         {
@@ -479,9 +479,9 @@ export const dict = {
 
     impact: {
       eyebrow: "Impacto",
-      title: "Lo que Mobileye hizo para los autos, lo hacemos para la medicina.",
-      titleLead: "Lo que Mobileye hizo para los autos, ",
-      titleTail: "lo hacemos para la medicina.",
+      title: "El modelo Mobileye, para la medicina.",
+      titleLead: "El modelo Mobileye,",
+      titleTail: "para la medicina.",
       body: "Mobileye no reemplazó el vehículo. Le añadió visión de IA al que ya tenías. Alethia hace lo mismo — convirtiendo los ultrasonidos que los hospitales ya pagaron en asistentes de diagnóstico en tiempo real. Sin equipo nuevo. Sin presupuesto de capital. Solo una máquina más inteligente.",
       markets: [
         {
