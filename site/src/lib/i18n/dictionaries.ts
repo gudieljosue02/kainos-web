@@ -18,7 +18,7 @@ export const dict = {
 
     hero: {
       eyebrow: "Kainos Medical · Alethia",
-      titleA: "Every legacy ultrasound,",
+      titleA: "The old ultrasound,",
       titleB: "reborn with AI.",
       body: "Alethia turns the ultrasound machines hospitals already own into real-time diagnostic assistants. A tablet, a capture device, and a fine-tuned medical AI — built for the doctor who sees the patient first.",
       primary: "Request investor deck",
@@ -282,7 +282,7 @@ export const dict = {
 
     hero: {
       eyebrow: "Kainos Medical · Alethia",
-      titleA: "Cada ultrasonido antiguo,",
+      titleA: "El viejo ultrasonido,",
       titleB: "renacido con IA.",
       body: "Alethia convierte los ultrasonidos que los hospitales ya tienen en asistentes diagnósticos en tiempo real. Una tableta, una capturadora de video y una IA médica fine-tuned — diseñada para el médico que ve al paciente primero.",
       primary: "Solicitar deck para inversores",
