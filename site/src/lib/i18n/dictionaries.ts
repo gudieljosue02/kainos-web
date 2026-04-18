@@ -326,7 +326,7 @@ export const dict = {
       eyebrow: "El puente",
       title: "La misma máquina.",
       titleHighlight: "Potenciada con la IA.",
-      body: "Alethia Kit se coloca entre el ultrasonido existente y el clínico. Una capturadora lee la salida RGB de cualquier ultrasonido antiguo, envía la señal a una tableta con Alethia, y regresa imágenes anotadas — en vivo, mientras el médico explora con la sonda.",
+      body: "Alethia Kit se conecta al ultrasonido existente. Una capturadora lee la salida RGB y envía la señal a la IA — todo en tiempo real, con identificación de órganos y enfermedades mientras el médico explora.",
       steps: [
         {
           number: "01",
