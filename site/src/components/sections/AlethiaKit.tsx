@@ -11,6 +11,7 @@ export function AlethiaKit() {
   return (
     <section id="kit" className="relative isolate overflow-hidden py-5 md:py-28 lg:py-40">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
+        {/* Top: header + visual */}
         <div className="grid grid-cols-1 items-start gap-3 md:gap-14 lg:grid-cols-12 lg:gap-16">
           {/* Left — copy */}
           <div className="lg:col-span-5 lg:pt-12">
@@ -35,7 +36,7 @@ export function AlethiaKit() {
               </p>
             </Reveal>
 
-            {/* Mobile: vertical list */}
+            {/* Mobile: vertical parts list */}
             <ul className="mt-4 space-y-0 md:hidden">
               {t.kit.parts.map((part, i) => (
                 <Reveal key={part.label} delay={220 + i * 80}>
@@ -51,36 +52,17 @@ export function AlethiaKit() {
                 </Reveal>
               ))}
             </ul>
-
-            {/* Desktop: horizontal 3-col cards */}
-            <div className="mt-10 hidden grid-cols-3 gap-4 md:grid">
-              {t.kit.parts.map((part, i) => (
-                <Reveal key={part.label} delay={220 + i * 80}>
-                  <div className="flex h-full flex-col rounded-[0.875rem] border border-hairline bg-bg-elev-2/60 p-4 transition-colors duration-500 hover:border-hairline-strong hover:bg-bg-elev-2">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
-                      {part.label}
-                    </span>
-                    <div className="mt-2 text-[14.5px] font-medium tracking-tight text-fg">
-                      {part.title}
-                    </div>
-                    <p className="text-body mt-1.5 text-[12.5px] leading-snug">{part.body}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
           </div>
 
-          {/* Right — mobile: clean stacked visual */}
+          {/* Right — visual */}
           <div className="lg:col-span-7">
             <Reveal>
               <div className="shell">
                 <div className="shell-inner relative overflow-hidden p-4 md:p-6">
                   <div className="ambient-grid absolute inset-0 opacity-40" />
-                  {/* Mobile visual */}
                   <div className="md:hidden">
                     <KitRenderMobile />
                   </div>
-                  {/* Desktop visual */}
                   <div className="hidden md:block md:min-h-[440px]">
                     <KitRender />
                   </div>
@@ -88,6 +70,23 @@ export function AlethiaKit() {
               </div>
             </Reveal>
           </div>
+        </div>
+
+        {/* Bottom: full-width 3-col parts cards (desktop only) */}
+        <div className="mt-8 hidden grid-cols-3 gap-4 md:grid lg:mt-12">
+          {t.kit.parts.map((part, i) => (
+            <Reveal key={part.label} delay={220 + i * 80}>
+              <div className="flex h-full flex-col rounded-[0.875rem] border border-hairline bg-bg-elev-1/60 p-5 transition-colors duration-500 hover:border-hairline-strong hover:bg-bg-elev-1">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                  {part.label}
+                </span>
+                <div className="mt-2 text-[15px] font-medium tracking-tight text-fg">
+                  {part.title}
+                </div>
+                <p className="text-body mt-1.5 text-[13px] leading-snug">{part.body}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
