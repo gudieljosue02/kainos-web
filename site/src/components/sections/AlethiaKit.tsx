@@ -14,7 +14,7 @@ export function AlethiaKit() {
         {/* Top: header + visual */}
         <div className="grid grid-cols-1 items-start gap-3 md:gap-14 lg:grid-cols-12 lg:gap-16">
           {/* Left — copy */}
-          <div className="lg:col-span-5 lg:pt-12">
+          <div className="lg:col-span-4 lg:pt-12">
             <Reveal>
               <div className="eyebrow mb-3 md:mb-6">
                 <span className="eyebrow-dot" />
@@ -55,15 +55,15 @@ export function AlethiaKit() {
           </div>
 
           {/* Right — visual */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-8">
             <Reveal>
               <div className="shell">
-                <div className="shell-inner relative overflow-hidden p-4 md:p-6">
+                <div className="shell-inner relative overflow-hidden p-4 md:p-2">
                   <div className="ambient-grid absolute inset-0 opacity-40" />
                   <div className="md:hidden">
                     <KitRenderMobile />
                   </div>
-                  <div className="hidden md:block md:min-h-[440px]">
+                  <div className="hidden md:block md:min-h-[520px]">
                     <KitRender />
                   </div>
                 </div>
