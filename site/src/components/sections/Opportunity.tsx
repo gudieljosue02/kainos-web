@@ -64,24 +64,20 @@ export function Opportunity() {
 
         {/* Why now + CTA */}
         <div className="mt-5 shell md:mt-20">
-          <div className="shell-inner grid grid-cols-1 gap-0 overflow-hidden lg:grid-cols-12">
+          <div className="shell-inner grid grid-cols-1 gap-0 lg:grid-cols-12">
             {/* Left: why now */}
             <div className="border-b border-hairline p-4 md:p-8 lg:col-span-7 lg:border-b-0 lg:border-r lg:p-12">
-              <Reveal>
-                <h3 className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent md:text-[11px]">
-                  {t.opportunity.pitchTitle}
-                </h3>
-              </Reveal>
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent md:text-[11px]">
+                {t.opportunity.pitchTitle}
+              </h3>
               <ul className="mt-3 space-y-0 md:mt-7 md:space-y-5">
                 {t.opportunity.pitchPoints.map((point, i) => (
-                  <Reveal key={i} delay={i * 80}>
-                    <li className="flex items-start gap-3 border-t border-hairline pt-3 first:border-t-0 first:pt-0 md:gap-4 md:pt-5">
-                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-[#4fc3f7]/40 bg-[#4fc3f7]/10 text-[#4fc3f7] md:mt-1 md:h-5 md:w-5">
-                        <Check size={10} weight="bold" />
-                      </span>
-                      <p className="text-body text-[12px] leading-snug md:text-[15px]">{point}</p>
-                    </li>
-                  </Reveal>
+                  <li key={i} className="flex items-start gap-3 border-t border-hairline pt-3 first:border-t-0 first:pt-0 md:gap-4 md:pt-5">
+                    <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-[#4fc3f7]/40 bg-[#4fc3f7]/10 text-[#4fc3f7] md:mt-1 md:h-5 md:w-5">
+                      <Check size={10} weight="bold" />
+                    </span>
+                    <p className="text-body text-[12px] leading-snug md:text-[15px]">{point}</p>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -90,33 +86,27 @@ export function Opportunity() {
             <div className="relative flex flex-col justify-between gap-4 p-4 md:gap-6 md:p-8 lg:col-span-5 lg:p-12">
               <div className="absolute inset-0 opacity-[0.5] [background:radial-gradient(ellipse_at_top_right,rgba(79,195,247,0.12)_0%,transparent_60%)]" />
               <div className="relative">
-                <Reveal>
-                  <h3 className="h-section text-2xl md:text-3xl lg:text-4xl">
-                    Let&apos;s talk.
-                  </h3>
-                </Reveal>
-                <Reveal delay={120}>
-                  <p className="text-body mt-2 max-w-sm text-[12.5px] md:mt-4 md:text-[15px]">
-                    Early-stage conversations with mission-aligned investors and
-                    health-system partners for LATAM and Africa.
-                  </p>
-                </Reveal>
+                <h3 className="h-section text-2xl md:text-3xl lg:text-4xl">
+                  Let&apos;s talk.
+                </h3>
+                <p className="text-body mt-2 max-w-sm text-[12.5px] md:mt-4 md:text-[15px]">
+                  Early-stage conversations with mission-aligned investors and
+                  health-system partners for LATAM and Africa.
+                </p>
               </div>
-              <Reveal delay={220}>
-                <div className="relative flex flex-col gap-2 md:gap-3">
-                  <Magnetic>
-                    <a href="#contact" className="btn-primary group">
-                      <span>{t.opportunity.cta}</span>
-                      <span className="icon-disc">
-                        <ArrowUpRight size={14} weight="bold" />
-                      </span>
-                    </a>
-                  </Magnetic>
-                  <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-fg-mute md:text-[10px]">
-                    Deck available under mutual NDA
-                  </p>
-                </div>
-              </Reveal>
+              <div className="relative flex flex-col gap-2 md:gap-3">
+                <Magnetic>
+                  <a href="#contact" className="btn-primary group">
+                    <span>{t.opportunity.cta}</span>
+                    <span className="icon-disc">
+                      <ArrowUpRight size={14} weight="bold" />
+                    </span>
+                  </a>
+                </Magnetic>
+                <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-fg-mute md:text-[10px]">
+                  Deck available under mutual NDA
+                </p>
+              </div>
             </div>
           </div>
         </div>
