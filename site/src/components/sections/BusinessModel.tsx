@@ -49,7 +49,7 @@ export function BusinessModel() {
                     <h3 className="mt-0.5 text-[11px] font-medium leading-tight tracking-tight text-fg md:mt-1 md:text-[15px]">
                       {seg.title}
                     </h3>
-                    <p className="text-body mt-1 text-[10px] leading-snug md:mt-2 md:text-[13px]">
+                    <p className="text-body mt-1 hidden text-[10px] leading-snug md:block md:mt-2 md:text-[13px]">
                       {seg.body}
                     </p>
                   </div>
