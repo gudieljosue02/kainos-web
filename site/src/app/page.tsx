@@ -7,6 +7,7 @@ import { Capabilities } from "@/components/sections/Capabilities";
 import { AlethiaKit } from "@/components/sections/AlethiaKit";
 import { Impact } from "@/components/sections/Impact";
 import { Opportunity } from "@/components/sections/Opportunity";
+import { BusinessModel } from "@/components/sections/BusinessModel";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/Footer";
 import { StackedSections } from "@/components/StackedSections";
@@ -29,6 +30,7 @@ export default function Home() {
           <AlethiaKit />
           <Impact />
           <Opportunity />
+          <BusinessModel />
           <Contact />
         </StackedSections>
       </main>

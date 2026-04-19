@@ -12,6 +12,7 @@ export const dict = {
       kit: "Alethia Kit",
       impact: "Impact",
       opportunity: "Opportunity",
+      model: "Business Model",
       contact: "Contact",
       primaryCta: "For investors",
     },
@@ -253,6 +254,45 @@ export const dict = {
       talkNote: "Deck available under mutual NDA",
     },
 
+    businessModel: {
+      eyebrow: "Business model",
+      titleLead: "Six paths to ",
+      titleTail: "market.",
+      body: "Alethia reaches every buyer through a different door, from global radiologists validating the model to governments deploying at scale.",
+      segments: [
+        {
+          label: "Validation",
+          title: "Global radiologist network",
+          body: "50+ radiologists receive Alethia free for life in exchange for validated case data. They sharpen the model. We build the evidence base.",
+        },
+        {
+          label: "Core revenue",
+          title: "Community clinics & hospitals",
+          body: "$4,500 one-time kit plus $199/month software. The sweet spot: clinics too small for a new AI ultrasound, too busy to go without one.",
+        },
+        {
+          label: "Education",
+          title: "Medical schools & teaching hospitals",
+          body: "Alethia guides students through probe placement and reads protocols step by step. Institutional licenses, billed annually.",
+        },
+        {
+          label: "Government",
+          title: "Ministries of health",
+          body: "Bulk deployment across underserved regions. One procurement deal covers hundreds of clinics with no radiologist on staff.",
+        },
+        {
+          label: "Premium",
+          title: "Oil platforms, military & disaster relief",
+          body: "Remote environments with no imaging infrastructure and buyers who pay for reliability. Premium pricing, zero negotiation.",
+        },
+        {
+          label: "Platform",
+          title: "Integrated teleradiology",
+          body: "Uncertain cases route automatically to a remote radiologist. Alethia earns per read, turning every kit into a referral node.",
+        },
+      ],
+    },
+
     contact: {
       eyebrow: "Contact",
       title: "Talk to Kainos Medical.",
@@ -303,6 +343,7 @@ export const dict = {
       kit: "Alethia Kit",
       impact: "Impacto",
       opportunity: "Oportunidad",
+      model: "Modelo",
       contact: "Contacto",
       primaryCta: "Para inversores",
     },
@@ -542,6 +583,45 @@ export const dict = {
       talkTitle: "Hablemos.",
       talkBody: "Conversaciones en etapa temprana con inversores y socios de sistemas de salud alineados con la misión.",
       talkNote: "Deck disponible bajo NDA mutuo",
+    },
+
+    businessModel: {
+      eyebrow: "Modelo de negocio",
+      titleLead: "Seis vías ",
+      titleTail: "al mercado.",
+      body: "Alethia llega a cada comprador por una puerta distinta, desde radiólogos globales que validan el modelo hasta gobiernos que despliegan a escala.",
+      segments: [
+        {
+          label: "Validación",
+          title: "Red global de radiólogos",
+          body: "Más de 50 radiólogos reciben Alethia gratis de por vida a cambio de casos validados. Ellos afinan el modelo. Nosotros construimos la evidencia.",
+        },
+        {
+          label: "Ingreso principal",
+          title: "Clínicas y hospitales comunitarios",
+          body: "Kit único de $4,500 más $199/mes de software. El punto ideal: clínicas demasiado pequeñas para un ultrasonido IA nuevo, demasiado ocupadas para prescindir de uno.",
+        },
+        {
+          label: "Educación",
+          title: "Escuelas de medicina y hospitales escuela",
+          body: "Alethia guía a los estudiantes en la colocación de la sonda y los protocolos paso a paso. Licencias institucionales anuales.",
+        },
+        {
+          label: "Gobierno",
+          title: "Ministerios de salud",
+          body: "Despliegue masivo en regiones sin cobertura. Un contrato gubernamental cubre cientos de clínicas sin radiólogo disponible.",
+        },
+        {
+          label: "Premium",
+          title: "Plataformas petroleras, militares y emergencias",
+          body: "Entornos remotos sin infraestructura de imagen y compradores que pagan por confiabilidad. Precios premium, negociación mínima.",
+        },
+        {
+          label: "Plataforma",
+          title: "Telerradiología integrada",
+          body: "Los casos inciertos se redirigen automáticamente a un radiólogo remoto. Alethia cobra por lectura, convirtiendo cada kit en un nodo de referencia.",
+        },
+      ],
     },
 
     contact: {

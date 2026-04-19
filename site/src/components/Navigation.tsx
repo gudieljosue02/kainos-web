@@ -30,6 +30,7 @@ export function Navigation() {
     { href: "#kit", label: t.nav.kit },
     { href: "#impact", label: t.nav.impact },
     { href: "#opportunity", label: t.nav.opportunity },
+    { href: "#model", label: t.nav.model },
   ];
 
   return (
