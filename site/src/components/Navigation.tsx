@@ -55,12 +55,12 @@ export function Navigation() {
           </a>
 
           {/* Desktop links — centered */}
-          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-0.5 lg:flex">
+          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-0 lg:flex">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="group relative rounded-md px-3 py-1.5 text-[13px] font-medium text-[#64748b] transition-colors duration-200 hover:text-[#0a1428]"
+                className="group relative whitespace-nowrap rounded-md px-2 py-1.5 text-[12px] font-medium text-[#64748b] transition-colors duration-200 hover:text-[#0a1428]"
               >
                 {link.label}
                 <span className="absolute bottom-0.5 left-3 right-3 h-[1.5px] overflow-hidden rounded-full bg-[#0f2a54]/30">
