@@ -33,23 +33,23 @@ export function BusinessModel() {
           </div>
         </div>
 
-        {/* Segments — mobile: 1-col, desktop: 3-col */}
-        <div className="mt-5 grid grid-cols-1 gap-2 md:mt-14 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
+        {/* Segments — mobile: 2-col, tablet: 2-col, desktop: 3-col */}
+        <div className="mt-5 grid grid-cols-2 gap-2 md:mt-14 md:gap-4 lg:grid-cols-3">
           {t.businessModel.segments.map((seg, i) => (
             <Reveal key={seg.title} delay={i * 70}>
-              <article className="relative h-full overflow-hidden rounded-[1rem] border border-hairline bg-bg-elev-1/60 p-4 transition-all duration-500 hover:bg-bg-elev-1 md:rounded-[1.25rem] md:p-6 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]">
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-hairline-strong font-mono text-[10px] text-fg-mute">
+              <article className="relative h-full overflow-hidden rounded-[0.875rem] border border-hairline bg-bg-elev-1/60 p-3 transition-all duration-500 hover:bg-bg-elev-1 md:rounded-[1.25rem] md:p-6 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]">
+                <div className="flex flex-col gap-1.5 md:flex-row md:items-start md:gap-3">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-hairline-strong font-mono text-[9px] text-fg-mute md:mt-0.5 md:h-6 md:w-6 md:text-[10px]">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="min-w-0">
-                    <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-accent">
+                    <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-accent md:text-[9px]">
                       {seg.label}
                     </div>
-                    <h3 className="mt-1 text-[13.5px] font-medium leading-tight tracking-tight text-fg md:text-[15px]">
+                    <h3 className="mt-0.5 text-[11px] font-medium leading-tight tracking-tight text-fg md:mt-1 md:text-[15px]">
                       {seg.title}
                     </h3>
-                    <p className="text-body mt-2 text-[11.5px] leading-snug md:text-[13px]">
+                    <p className="text-body mt-1 text-[10px] leading-snug md:mt-2 md:text-[13px]">
                       {seg.body}
                     </p>
                   </div>
