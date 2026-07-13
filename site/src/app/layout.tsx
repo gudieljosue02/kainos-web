@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, Plus_Jakarta_Sans, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 import { ScrollProvider } from "@/components/ScrollProvider";
-import { CursorGlow } from "@/components/fx/CursorGlow";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const grotesk = Space_Grotesk({
+  variable: "--font-grotesk",
   subsets: ["latin"],
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
+  weight: ["400", "700"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -62,15 +68,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${grotesk.variable} ${jakarta.variable} ${spaceMono.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-[100dvh] antialiased">
         <LocaleProvider>
-          <ScrollProvider>
-            <CursorGlow />
-            {children}
-          </ScrollProvider>
+          <ScrollProvider>{children}</ScrollProvider>
         </LocaleProvider>
       </body>
     </html>

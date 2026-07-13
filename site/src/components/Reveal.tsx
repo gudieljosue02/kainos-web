@@ -49,12 +49,12 @@ export function Reveal({
     return () => observer.disconnect();
   }, [delay]);
 
+  const setRef = (node: HTMLElement | null) => {
+    ref.current = node;
+  };
+
   return (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    <Tag
-      ref={ref as any}
-      className={cn("reveal", className)}
-    >
+    <Tag ref={setRef} className={cn("reveal", className)}>
       {children}
     </Tag>
   );

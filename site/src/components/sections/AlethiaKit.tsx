@@ -1,226 +1,64 @@
 "use client";
 
+import { Check } from "@phosphor-icons/react/dist/ssr";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { Reveal } from "@/components/Reveal";
-import { UltrasoundVisual } from "@/components/UltrasoundVisual";
-import { ScanReveal } from "@/components/fx/ScanReveal";
-import { Spotlight } from "@/components/fx/Spotlight";
+import { SectionHead } from "@/components/SectionHead";
 
 export function AlethiaKit() {
   const { t } = useLocale();
 
   return (
-    <section id="kit" className="relative isolate overflow-hidden py-5 md:py-28 lg:py-40">
-      <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
-        {/* Top: header + visual */}
-        <div className="grid grid-cols-1 items-start gap-3 md:gap-14 lg:grid-cols-12 lg:gap-16">
-          {/* Left — copy */}
-          <div className="lg:col-span-4 lg:pt-12">
-            <Reveal>
-              <div className="eyebrow mb-3 md:mb-6">
-                <span className="eyebrow-dot" />
-                {t.kit.eyebrow}
-              </div>
-            </Reveal>
-            <Reveal as="h2" className="h-section text-[1.6rem] sm:text-[2.25rem] md:text-5xl lg:text-6xl">
-              Alethia{" "}
-              <ScanReveal text="Kit." />
-            </Reveal>
-            <Reveal delay={100}>
-              <p className="mt-2 text-[14px] leading-tight tracking-tight text-fg-dim md:mt-5 md:text-xl">
-                {t.kit.subtitle}
-              </p>
-            </Reveal>
-            <Reveal delay={160}>
-              <p className="text-body mt-2 hidden max-w-lg text-[13px] md:mt-6 md:block md:text-[15.5px]">
-                {t.kit.body}
-              </p>
-            </Reveal>
+    <section id="kit" className="pt-28 md:pt-40">
+      <div className="mx-auto w-full max-w-[88rem] px-5 md:px-10">
+        <SectionHead
+          index="05"
+          label={t.kit.eyebrow}
+          title={
+            <>
+              {t.kit.title}{" "}
+              <span className="text-ink-mute">{t.kit.subtitle}</span>
+            </>
+          }
+          body={t.kit.body}
+        />
 
-            {/* Mobile: vertical parts list */}
-            <ul className="mt-4 space-y-0 md:hidden">
-              {t.kit.parts.map((part, i) => (
-                <Reveal key={part.label} delay={220 + i * 80}>
-                  <li className="flex items-start gap-3 border-t border-hairline pt-3">
-                    <span className="mt-0.5 min-w-[60px] font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
-                      {part.label}
-                    </span>
-                    <div>
-                      <div className="text-[13px] font-medium tracking-tight text-fg">{part.title}</div>
-                      <p className="text-body mt-0.5 text-[11.5px]">{part.body}</p>
-                    </div>
-                  </li>
-                </Reveal>
-              ))}
-            </ul>
-          </div>
-
-          {/* Right — visual */}
+        {/* Datasheet */}
+        <div className="mt-14 grid grid-cols-1 gap-10 md:mt-20 lg:grid-cols-12">
+          {/* Spec table */}
           <div className="lg:col-span-8">
-            <Reveal>
-              <div className="shell h-full">
-                <div className="shell-inner relative h-full min-h-[500px] overflow-hidden p-4 md:min-h-[640px] md:p-2">
-                  <div className="ambient-grid absolute inset-0 opacity-40" />
-                  <div className="md:hidden">
-                    <KitRenderMobile />
-                  </div>
-                  <div className="absolute inset-2 hidden md:block">
-                    <KitRender />
-                  </div>
+            {t.kit.parts.map((part, i) => (
+              <Reveal key={part.label} delay={i * 100}>
+                <div className="data-row grid-cols-1 gap-x-10 gap-y-2 py-7 sm:grid-cols-[110px_minmax(0,280px)_1fr] sm:items-start md:py-9">
+                  <span className="t-label pt-1">{part.label}</span>
+                  <h3 className="t-section text-xl text-ink md:text-2xl">{part.title}</h3>
+                  <p className="t-body text-[14px] md:text-[15px]">{part.body}</p>
                 </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            ))}
+            <hr className="rule" />
           </div>
-        </div>
 
-        {/* Bottom: full-width 3-col parts cards (desktop only) */}
-        <div className="mt-8 hidden grid-cols-3 gap-6 md:grid lg:mt-12">
-          {t.kit.parts.map((part, i) => (
-            <Reveal key={part.label} delay={220 + i * 80}>
-              <article className="group relative h-full overflow-hidden rounded-[1.25rem] border border-hairline bg-bg-elev-1/60 p-7 transition-all duration-500 hover:border-hairline-strong hover:bg-bg-elev-1 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]">
-                <Spotlight />
-                <div className="relative z-10 font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
-                  {part.label}
-                </div>
-                <h3 className="relative z-10 mt-3 text-[18px] font-medium tracking-tight text-fg">
-                  {part.title}
-                </h3>
-                <p className="relative z-10 text-body mt-2.5 text-[13.5px] leading-snug">{part.body}</p>
-                <div className="pointer-events-none absolute -right-1/4 -top-1/4 h-[200%] w-[200%] opacity-0 transition-opacity duration-700 group-hover:opacity-100">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(79,195,247,0.08)_0%,transparent_50%)]" />
-                </div>
-              </article>
-            </Reveal>
-          ))}
+          {/* Contents card — the "one box" */}
+          <Reveal delay={200} className="lg:col-span-4">
+            <aside className="border border-ink bg-ink p-6 text-paper md:p-8">
+              <span className="t-label !text-paper/60">Alethia Kit</span>
+              <p className="t-section mt-3 text-2xl">1 ×</p>
+              <ul className="mt-6 space-y-3.5">
+                {t.kit.parts.map((part) => (
+                  <li key={part.label} className="flex items-start gap-3 border-t border-paper/15 pt-3.5">
+                    <Check size={13} weight="bold" className="mt-1 shrink-0 text-accent-sky" />
+                    <span className="text-[13.5px] leading-snug text-paper/85">{part.title}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.14em] text-paper/50">
+                VGA · DVI · S-Video · RCA
+              </p>
+            </aside>
+          </Reveal>
         </div>
       </div>
     </section>
-  );
-}
-
-/** Clean mobile version — no absolute positioning, no overlapping callouts */
-function KitRenderMobile() {
-  return (
-    <div className="flex flex-col gap-3">
-      {/* Tablet frame */}
-      <div className="relative w-full overflow-hidden rounded-[16px] border border-white/10 bg-gradient-to-br from-[#14202e] to-[#0a1220] p-2 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.5)]">
-        {/* Camera notch */}
-        <div className="mb-1.5 flex justify-center">
-          <span className="h-1 w-4 rounded-full bg-white/10" />
-        </div>
-        {/* Screen */}
-        <div className="relative overflow-hidden rounded-[10px] border border-white/5 bg-[#020509]">
-          <UltrasoundVisual className="w-full rounded-[10px]" withScan withAnnotations />
-          <div className="absolute left-2 top-2 flex items-center gap-1.5 rounded-full border border-white/10 bg-black/50 px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.2em] text-white/70 backdrop-blur-[4px]">
-            <span className="h-1 w-1 rounded-full bg-[#4fc3f7] animate-pulse" />
-            Alethia Kit · live
-          </div>
-        </div>
-      </div>
-
-      {/* Component chips */}
-      <div className="grid grid-cols-3 gap-2">
-        {[
-          { label: "Tablet", sub: "Rugged · Windows", dot: "#4fc3f7" },
-          { label: "Capture", sub: "VGA · DVI · S-Video", dot: "#4fc3f7" },
-          { label: "Model", sub: "On-device · OTA", dot: "#4fc3f7" },
-        ].map((c) => (
-          <div key={c.label} className="flex flex-col gap-1 rounded-[8px] border border-hairline bg-white/[0.02] p-2">
-            <div className="flex items-center gap-1">
-              <span className="h-1 w-1 rounded-full" style={{ background: c.dot, boxShadow: `0 0 4px ${c.dot}` }} />
-              <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#4fc3f7]/80">{c.label}</span>
-            </div>
-            <span className="text-[10px] leading-snug text-fg-mute">{c.sub}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/**
- * Abstract product render: a rugged tablet lying on a surface with a cable
- * running to a capture module, with the Alethia display on-screen.
- */
-function KitRender() {
-  return (
-    <div className="relative h-full w-full">
-      {/* Tablet body */}
-      <div className="absolute left-1/2 top-1/2 h-[74%] w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-[22px] border border-white/10 bg-gradient-to-br from-[#14202e] to-[#0a1220] p-2 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.08)]">
-        {/* Screen */}
-        <div className="relative h-full w-full overflow-hidden rounded-[16px] border border-white/5 bg-[#020509]">
-          <UltrasoundVisual className="h-full rounded-[14px]" />
-          <div className="absolute left-3 top-3 flex items-center gap-2 rounded-full border border-white/10 bg-black/50 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.22em] text-white/70 backdrop-blur-[4px]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4fc3f7]" />
-            Alethia Kit · live
-          </div>
-        </div>
-
-        {/* Camera notch */}
-        <span className="pointer-events-none absolute left-1/2 top-[6px] h-1 w-1 -translate-x-1/2 rounded-full bg-white/20" />
-      </div>
-
-      {/* Capture device — small box with LED */}
-      <div className="absolute bottom-[6%] right-[6%] flex items-center gap-2 rounded-[10px] border border-white/10 bg-gradient-to-br from-[#0f141c] to-[#060a12] p-2.5 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)]">
-        <div className="h-6 w-10 rounded-[3px] border border-white/5 bg-black/50" />
-        <div className="flex flex-col gap-1">
-          <span className="h-1 w-1 rounded-full bg-[#4fc3f7] shadow-[0_0_6px_rgba(79,195,247,0.9)]" />
-          <span className="h-1 w-1 rounded-full bg-emerald-500/70" />
-        </div>
-      </div>
-
-      {/* Cable curve: connecting capture to tablet */}
-      <svg
-        className="pointer-events-none absolute inset-0 h-full w-full"
-        viewBox="0 0 160 100"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M 140 82 Q 125 78 110 72"
-          fill="none"
-          stroke="rgba(255,255,255,0.2)"
-          strokeWidth="0.6"
-          strokeLinecap="round"
-        />
-      </svg>
-
-      {/* Labeled callouts */}
-      <Callout text="TABLET" className="left-[8%] top-[18%]" align="left" />
-      <Callout text="ALETHIA · RUNNING" className="right-[10%] top-[30%]" align="right" />
-      <Callout text="CAPTURE MODULE" className="bottom-[22%] right-[32%]" align="right" />
-    </div>
-  );
-}
-
-function Callout({
-  text,
-  className = "",
-  align = "left",
-}: {
-  text: string;
-  className?: string;
-  align?: "left" | "right";
-}) {
-  return (
-    <div className={`absolute flex items-center gap-2 ${className}`}>
-      {align === "left" && (
-        <>
-          <span className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-fg-mute">
-            {text}
-          </span>
-          <span className="h-[1px] w-8 bg-gradient-to-r from-fg-ghost to-transparent" />
-          <span className="h-1.5 w-1.5 rounded-full border border-[#4fc3f7] bg-[#4fc3f7]/30" />
-        </>
-      )}
-      {align === "right" && (
-        <>
-          <span className="h-1.5 w-1.5 rounded-full border border-[#4fc3f7] bg-[#4fc3f7]/30" />
-          <span className="h-[1px] w-8 bg-gradient-to-l from-fg-ghost to-transparent" />
-          <span className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-fg-mute">
-            {text}
-          </span>
-        </>
-      )}
-    </div>
   );
 }

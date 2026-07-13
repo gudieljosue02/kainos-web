@@ -10,29 +10,25 @@ import { Opportunity } from "@/components/sections/Opportunity";
 import { BusinessModel } from "@/components/sections/BusinessModel";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/Footer";
-import { StackedSections } from "@/components/StackedSections";
 
 export default function Home() {
   return (
     <>
-      <div className="ambient-mesh" aria-hidden />
-      <div className="ambient-grain" aria-hidden />
+      <div className="paper-grain" aria-hidden />
 
       <Navigation />
 
-      <main className="relative">
+      <main id="main" className="relative">
         <Hero />
-        <StackedSections>
-          <Problem />
-          <Bridge />
-          <HowItWorks />
-          <Capabilities />
-          <AlethiaKit />
-          <Impact />
-          <Opportunity />
-          <BusinessModel />
-          <Contact />
-        </StackedSections>
+        <Problem />
+        <Bridge />
+        <HowItWorks />
+        <Capabilities />
+        <AlethiaKit />
+        <Impact />
+        <Opportunity />
+        <BusinessModel />
+        <Contact />
       </main>
 
       <Footer />

@@ -25,6 +25,13 @@ export const dict = {
       primary: "Request investor deck",
       secondary: "See how it works",
       pill: "In development · First pilots 2026",
+      scanCaption: "Simulated output · live annotation",
+      statusLabel: "Status",
+      statusValue: "In development",
+      pilotsLabel: "First pilots",
+      pilotsValue: "2026",
+      focusLabel: "Focus",
+      focusValue: "Emergency & primary care",
     },
 
     problem: {
@@ -64,6 +71,14 @@ export const dict = {
       title: "Same machine.",
       titleHighlight: "Different eyes.",
       body: "Alethia Kit sits between your existing ultrasound machine and the clinician. A video capture device reads the RGB output of any legacy ultrasound, streams it into a tablet running Alethia, and returns annotated imagery, live, on-screen, as the probe moves.",
+      diagram: {
+        inTitle: "Ultrasound",
+        inCaption: "Legacy machine",
+        midTitle: "Capture",
+        midCaption: "RGB ingest",
+        outTitle: "Alethia",
+        outCaption: "On-device AI",
+      },
       steps: [
         {
           number: "01",
@@ -193,7 +208,7 @@ export const dict = {
     impact: {
       eyebrow: "Impact",
       title: "The Mobileye model, for medicine.",
-      titleLead: "The Mobileye model,",
+      titleLead: "The Mobileye model, ",
       titleTail: "for medicine.",
       body: "Mobileye didn't replace the vehicle. It added AI vision to the one you already owned. Alethia does the same, turning the ultrasound machines hospitals already paid for into real-time diagnostic intelligence. No new equipment. No capital budget. Just a smarter machine.",
       markets: [
@@ -317,6 +332,7 @@ export const dict = {
         "Thank you. We'll be in touch shortly.",
       errorRequired: "This field is required.",
       errorEmail: "Please enter a valid email.",
+      replyNote: "We reply within 72 hours",
     },
 
     footer: {
@@ -324,6 +340,11 @@ export const dict = {
       copy: "© 2026 Kainos Medical. All rights reserved.",
       disclaimer:
         "Alethia is a clinical decision-support system under development. Not yet cleared by any regulatory authority. Not for diagnostic use outside controlled pilot programs.",
+      colIndex: "Index",
+      colCompany: "Company",
+      disclaimerLabel: "Regulatory note",
+      madeIn: "Designed & engineered in Latin America",
+      backToTop: "Back to top",
     },
 
     lang: {
@@ -356,6 +377,13 @@ export const dict = {
       primary: "Solicitar deck para inversores",
       secondary: "Cómo funciona",
       pill: "En desarrollo · Primeros pilotos 2026",
+      scanCaption: "Salida simulada · anotación en vivo",
+      statusLabel: "Estado",
+      statusValue: "En desarrollo",
+      pilotsLabel: "Primeros pilotos",
+      pilotsValue: "2026",
+      focusLabel: "Enfoque",
+      focusValue: "Urgencias y atención primaria",
     },
 
     problem: {
@@ -395,6 +423,14 @@ export const dict = {
       title: "La misma máquina.",
       titleHighlight: "Potenciada con la IA.",
       body: "Alethia Kit se conecta al ultrasonido existente. Una capturadora lee la salida RGB y envía la señal a la IA, todo en tiempo real, con identificación de órganos y enfermedades mientras el médico explora.",
+      diagram: {
+        inTitle: "Ultrasonido",
+        inCaption: "Máquina existente",
+        midTitle: "Captura",
+        midCaption: "Ingesta RGB",
+        outTitle: "Alethia",
+        outCaption: "IA en el dispositivo",
+      },
       steps: [
         {
           number: "01",
@@ -524,7 +560,7 @@ export const dict = {
     impact: {
       eyebrow: "Impacto",
       title: "El modelo Mobileye, para la medicina.",
-      titleLead: "El modelo Mobileye,",
+      titleLead: "El modelo Mobileye, ",
       titleTail: "para la medicina.",
       body: "Mobileye no reemplazó el vehículo. Le añadió visión de IA al que ya tenías. Alethia hace lo mismo, convirtiendo los ultrasonidos que los hospitales ya pagaron en asistentes de diagnóstico en tiempo real. Sin equipo nuevo. Sin presupuesto de capital. Solo una máquina más inteligente.",
       markets: [
@@ -647,6 +683,7 @@ export const dict = {
       success: "Gracias. Te contactaremos pronto.",
       errorRequired: "Este campo es obligatorio.",
       errorEmail: "Ingresa un correo válido.",
+      replyNote: "Respondemos en menos de 72 horas",
     },
 
     footer: {
@@ -654,6 +691,11 @@ export const dict = {
       copy: "© 2026 Kainos Medical. Todos los derechos reservados.",
       disclaimer:
         "Alethia es un sistema de apoyo a la decisión clínica en desarrollo. Aún no cuenta con autorización regulatoria. No apto para uso diagnóstico fuera de programas piloto controlados.",
+      colIndex: "Índice",
+      colCompany: "Compañía",
+      disclaimerLabel: "Nota regulatoria",
+      madeIn: "Diseñado e ingeniado en América Latina",
+      backToTop: "Volver arriba",
     },
 
     lang: {
