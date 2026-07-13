@@ -6,7 +6,7 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
 } from "react";
 import {
   DEFAULT_LOCALE,
@@ -27,8 +27,16 @@ const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 const STORAGE_KEY = "kainos-locale";
 
+/**
+ * Locale lives in a tiny external store synced with localStorage.
+ * useSyncExternalStore hydrates with the server snapshot (default locale)
+ * and re-renders with the detected one after mount — no hydration mismatch,
+ * no setState-in-effect.
+ */
+let currentLocale: Locale | null = null;
+const listeners = new Set<() => void>();
+
 function detectInitialLocale(): Locale {
-  if (typeof window === "undefined") return DEFAULT_LOCALE;
   const stored = window.localStorage.getItem(STORAGE_KEY);
   if (stored && LOCALES.includes(stored as Locale)) return stored as Locale;
   const browser = window.navigator.language.slice(0, 2).toLowerCase();
@@ -36,35 +44,43 @@ function detectInitialLocale(): Locale {
   return DEFAULT_LOCALE;
 }
 
+function getSnapshot(): Locale {
+  if (currentLocale === null) currentLocale = detectInitialLocale();
+  return currentLocale;
+}
+
+function getServerSnapshot(): Locale {
+  return DEFAULT_LOCALE;
+}
+
+function subscribe(listener: () => void): () => void {
+  listeners.add(listener);
+  return () => listeners.delete(listener);
+}
+
+function setStoredLocale(next: Locale) {
+  currentLocale = next;
+  try {
+    window.localStorage.setItem(STORAGE_KEY, next);
+  } catch {
+    // Storage unavailable (private mode) — keep the in-memory locale.
+  }
+  listeners.forEach((listener) => listener());
+}
+
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
+  const locale = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
-    const initial = detectInitialLocale();
-    setLocaleState(initial);
-  }, []);
-
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = locale;
-    }
+    document.documentElement.lang = locale;
   }, [locale]);
 
   const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(STORAGE_KEY, next);
-    }
+    setStoredLocale(next);
   }, []);
 
   const toggle = useCallback(() => {
-    setLocaleState((prev) => {
-      const next: Locale = prev === "en" ? "es" : "en";
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem(STORAGE_KEY, next);
-      }
-      return next;
-    });
+    setStoredLocale(getSnapshot() === "en" ? "es" : "en");
   }, []);
 
   const value = useMemo<LocaleContextValue>(
