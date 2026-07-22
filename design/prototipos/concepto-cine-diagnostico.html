@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kainos Medical — Alethia · Cine Diagnóstico</title>
+<meta name="description" content="Alethia convierte los ultrasonidos que los hospitales ya tienen en asistentes diagnósticos en tiempo real.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ CINE DIAGNÓSTICO — Kainos Medical ============ */
+:root{
+  --ink:#04070d;
+  --navy:#0a1428;
+  --cyan:#4fc3f7;
+  --cyan-dim:rgba(79,195,247,.55);
+  --cyan-ghost:rgba(79,195,247,.16);
+  --bone:#dfe9f2;
+  --bone-dim:#8fa3b8;
+  --hair:rgba(160,200,230,.14);
+  --sans:"Archivo","Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--ink);
+  color:var(--bone);
+  font-family:var(--sans);
+  font-weight:300;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+}
+::selection{background:var(--cyan);color:#04121c}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:4px;border-radius:2px}
+
+.skip{position:fixed;left:12px;top:-60px;z-index:999;background:var(--cyan);color:#04121c;
+  font-family:var(--mono);font-size:12px;padding:10px 16px;text-decoration:none;transition:top .2s}
+.skip:focus{top:12px}
+
+/* ---------- fixed scene layers ---------- */
+#scene{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block}
+.vignette{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 120% 90% at 50% 42%,transparent 55%,rgba(2,4,8,.72) 100%);}
+.grain{position:fixed;inset:-60px;z-index:2;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.1s steps(4) infinite}
+@keyframes grain{
+  0%{transform:translate(0,0)}25%{transform:translate(-22px,14px)}
+  50%{transform:translate(14px,-20px)}75%{transform:translate(-8px,-10px)}100%{transform:translate(0,0)}
+}
+
+/* ---------- HUD (mono burn-ins in the corners) ---------- */
+.hud{position:fixed;z-index:4;pointer-events:none;font-family:var(--mono);
+  font-size:10px;letter-spacing:.14em;color:rgba(143,178,204,.62);text-transform:uppercase;white-space:nowrap}
+.hud b{color:var(--cyan-dim);font-weight:400}
+.hud-tl{top:86px;left:28px}
+.hud-tr{top:86px;right:28px;text-align:right}
+.hud-bl{bottom:22px;left:28px}
+.hud-br{bottom:22px;right:28px;text-align:right}
+.hud{transition:opacity .5s}
+@media (max-width:760px){
+  .hud-tr,.hud-br{display:none}
+  .hud-tl{left:20px;top:78px}.hud-bl{left:20px;bottom:16px}
+  body.deep .hud-tl{opacity:0}
+}
+
+/* ---------- chapter rail ---------- */
+.rail{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:5;
+  display:flex;flex-direction:column;gap:22px;list-style:none}
+.rail a{display:block;width:22px;height:22px;position:relative}
+.rail a::before{content:"";position:absolute;inset:8px;border-radius:50%;
+  background:rgba(143,178,204,.35);transition:background .3s,box-shadow .3s}
+.rail a:hover::before,.rail a.act::before{background:var(--cyan);box-shadow:0 0 12px rgba(79,195,247,.8)}
+@media (max-width:1080px){.rail{display:none}}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 28px;
+  background:linear-gradient(to bottom,rgba(4,7,13,.85),rgba(4,7,13,0));}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:30px;height:30px;flex:none}
+.brand span{font-family:var(--mono);font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--bone);white-space:nowrap}
+.brand small{font-family:var(--mono);font-size:9px;letter-spacing:.28em;color:var(--bone-dim);display:block;margin-top:2px;white-space:nowrap}
+.nav-cta{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:#bfe6f7;text-decoration:none;border:1px solid rgba(79,195,247,.4);
+  padding:10px 18px;white-space:nowrap;transition:background .25s,box-shadow .25s,color .25s}
+.nav-cta:hover{background:rgba(79,195,247,.12);box-shadow:0 0 22px rgba(79,195,247,.25)}
+@media (max-width:760px){
+  .nav{padding:14px 20px}
+  .brand span{letter-spacing:.16em;font-size:10.5px}
+  .brand small{letter-spacing:.14em;font-size:8px}
+  .nav-cta{padding:8px 12px;font-size:9.5px;letter-spacing:.1em}
+}
+
+/* ---------- content shell ---------- */
+main{position:relative;z-index:10}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+@media (max-width:760px){.wrap{padding:0 20px}}
+
+/* slate: scene marker */
+.slate{display:flex;align-items:center;gap:14px;font-family:var(--mono);
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--cyan-dim);margin-bottom:34px}
+.slate::after{content:"";height:1px;flex:0 0 64px;background:linear-gradient(to right,var(--cyan-dim),transparent)}
+
+/* film-credit display type */
+h1,h2{font-weight:100;text-transform:uppercase;line-height:1.14;color:var(--bone);
+  letter-spacing:.1em;text-wrap:balance}
+h1{font-size:clamp(2rem,5.6vw,4.6rem)}
+h2{font-size:clamp(1.6rem,4.2vw,3.3rem)}
+.lede{color:var(--bone-dim);font-weight:300;font-size:clamp(1rem,1.35vw,1.13rem);max-width:34em}
+
+/* buttons */
+.btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;padding:16px 26px;display:inline-block;transition:all .25s}
+.btn-solid{background:var(--cyan);color:#04121c;font-weight:500}
+.btn-solid:hover{box-shadow:0 0 34px rgba(79,195,247,.5);transform:translateY(-1px)}
+.btn-ghost{border:1px solid rgba(79,195,247,.38);color:#bfe6f7}
+.btn-ghost:hover{background:rgba(79,195,247,.1);box-shadow:0 0 22px rgba(79,195,247,.2)}
+
+/* reveal machinery */
+.fx{opacity:0;transform:translateY(16px);filter:blur(5px);
+  transition:opacity .9s cubic-bezier(.2,.6,.2,1),transform .9s cubic-bezier(.2,.6,.2,1),filter .9s;
+  transition-delay:var(--d,0s)}
+.fx.on{opacity:1;transform:none;filter:blur(0)}
+
+/* projector burn-in for stat values */
+@keyframes burn{
+  0%{opacity:0;filter:brightness(3.4) blur(10px);text-shadow:0 0 60px rgba(79,195,247,.95),0 0 18px rgba(255,255,255,.8)}
+  35%{opacity:1;filter:brightness(1.9) blur(1px);text-shadow:0 0 44px rgba(79,195,247,.7)}
+  100%{opacity:1;filter:brightness(1) blur(0);text-shadow:0 0 22px rgba(79,195,247,.22)}
+}
+.stat .v{opacity:0}
+.stat.on .v{animation:burn 1.5s ease-out forwards;animation-delay:var(--d,0s)}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;position:relative;padding:120px 28px 90px}
+.pill{font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--cyan);border:1px solid rgba(79,195,247,.35);padding:9px 18px;margin-bottom:40px;
+  display:inline-flex;align-items:center;gap:10px}
+.pill i{width:6px;height:6px;border-radius:50%;background:var(--cyan);display:inline-block;
+  box-shadow:0 0 10px var(--cyan);animation:pulse 2.2s ease-in-out infinite;flex:none}
+@media (max-width:760px){.pill{font-size:9px;letter-spacing:.16em;padding:8px 14px}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{max-width:14em;margin-bottom:34px}
+.hero .lede{margin:0 auto 46px;max-width:38em}
+.hero .btns{justify-content:center}
+.scrollcue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.34em;color:var(--bone-dim);text-transform:uppercase}
+.scrollcue i{width:1px;height:44px;background:linear-gradient(to bottom,transparent,var(--cyan));
+  display:block;transform-origin:top;animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0)}55%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* ---------- PROBLEMA (film credits stats) ---------- */
+.problema{padding:24vh 0 12vh;text-align:center}
+.problema h2{margin:0 auto 26px;max-width:16em}
+.problema .lede{margin:0 auto}
+.credits{list-style:none;margin-top:10vh}
+.credits .stat{padding:11vh 0;position:relative}
+.credits .stat + .stat::before{content:"";position:absolute;top:0;left:50%;
+  transform:translateX(-50%);width:120px;height:1px;
+  background:linear-gradient(to right,transparent,var(--hair) 30%,var(--hair) 70%,transparent)}
+.stat .v{display:block;font-weight:100;font-size:clamp(3.4rem,9vw,7.2rem);letter-spacing:.04em;
+  line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.stat .l{display:block;margin:22px auto 0;max-width:26em;color:var(--bone-dim);font-size:clamp(.95rem,1.2vw,1.06rem)}
+.stat .f{display:block;margin-top:16px;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--cyan-dim)}
+.stat .f::before{content:"FUENTE — "}
+
+/* ---------- PRODUCTO ---------- */
+.producto{padding:26vh 0 30vh}
+.prod-col{max-width:470px;position:relative}
+@media (max-width:1000px){
+  .prod-col{background:linear-gradient(to bottom,transparent,rgba(4,7,13,.96) 6%,rgba(4,7,13,.96) 94%,transparent);
+    padding:48px 12px;margin:0 -12px}
+}
+.producto h2{margin-bottom:22px}
+.producto .lede{margin-bottom:9vh}
+.paso{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:5.5vh 0;border-top:1px solid var(--hair)}
+.paso .n{font-family:var(--mono);font-weight:400;font-size:13px;letter-spacing:.2em;color:var(--cyan);
+  padding-top:6px}
+.paso .n::after{content:"";display:block;width:26px;height:1px;background:var(--cyan-ghost);margin-top:12px}
+.paso h3{font-weight:300;font-size:clamp(1.15rem,1.7vw,1.4rem);letter-spacing:.04em;
+  text-transform:none;margin-bottom:10px;color:var(--bone)}
+.paso p{color:var(--bone-dim);font-size:.98rem;max-width:30em}
+
+/* ---------- MERCADO ---------- */
+.mercado{padding:58vh 0 18vh;text-align:center}
+.mercado h2{margin:0 auto 12vh;max-width:15em}
+.mstats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;list-style:none;
+  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.mstats .stat{padding:7vh 20px;border-top:0}
+.mstats .stat + .stat{border-left:1px solid var(--hair)}
+.mstats .v{font-size:clamp(2.6rem,5vw,4.4rem)}
+.mstats .l{font-size:.92rem;max-width:16em}
+@media (max-width:760px){
+  .mstats{grid-template-columns:1fr}
+  .mstats .stat + .stat{border-left:0;border-top:1px solid var(--hair)}
+  .mstats .stat{padding:6vh 10px}
+}
+.modelo{margin:12vh auto 0;max-width:52em;text-align:left;
+  border-left:1px solid rgba(79,195,247,.4);padding:6px 0 6px 28px}
+.modelo b{display:block;font-family:var(--mono);font-weight:400;font-size:10px;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
+.modelo p{font-family:var(--mono);font-size:13px;line-height:2;color:var(--bone-dim)}
+
+/* ---------- CONTACTO ---------- */
+.contacto{min-height:92svh;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;padding:16vh 28px 12vh}
+.contacto h2{margin-bottom:24px}
+.contacto .lede{margin:0 auto 48px}
+.contacto .mailto{margin-top:34px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  color:var(--bone-dim);text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--hair);
+  padding-bottom:4px;transition:color .25s,border-color .25s}
+.contacto .mailto:hover{color:var(--cyan);border-color:var(--cyan-dim)}
+
+/* ---------- FOOTER ---------- */
+footer{position:relative;z-index:10;border-top:1px solid var(--hair);
+  background:linear-gradient(to bottom,rgba(4,7,13,.4),rgba(2,4,8,.92))}
+.foot{max-width:1160px;margin:0 auto;padding:44px 28px 40px;
+  display:grid;grid-template-columns:auto 1fr;gap:20px 60px;align-items:start}
+.foot svg{width:26px;height:26px;opacity:.8}
+.foot .disc{font-family:var(--mono);font-size:10.5px;line-height:1.9;letter-spacing:.06em;
+  color:rgba(143,163,184,.75);max-width:62em}
+.foot .copy{grid-column:2;font-family:var(--mono);font-size:10px;letter-spacing:.2em;
+  color:rgba(143,163,184,.5);text-transform:uppercase}
+@media (max-width:760px){
+  .foot{grid-template-columns:1fr;padding:36px 20px}
+  .foot .copy{grid-column:1}
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  .grain,.pill i,.scrollcue i{animation:none !important}
+  .fx{opacity:1 !important;transform:none !important;filter:none !important;transition:none !important}
+  .stat .v{opacity:1 !important;animation:none !important;text-shadow:0 0 22px rgba(79,195,247,.22)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="hud hud-tl" aria-hidden="true">MODO B · SECTORIAL 60° · <b>3.5 MHz</b></div>
+<div class="hud hud-tr" aria-hidden="true">GAN 62 dB · PRF 1.2 kHz · PROF 16 cm</div>
+<div class="hud hud-bl" aria-hidden="true">TC <b id="tc">00:00:00:00</b></div>
+<div class="hud hud-br" aria-hidden="true"><b>ALETHIA</b> · INFERENCIA EN DISPOSITIVO</div>
+
+<nav class="rail" aria-label="Escenas">
+  <a href="#hero" aria-label="Escena 1 — Apertura" data-rail="hero"></a>
+  <a href="#problema" aria-label="Escena 2 — El vacío" data-rail="problema"></a>
+  <a href="#producto" aria-label="Escena 3 — La señal" data-rail="producto"></a>
+  <a href="#mercado" aria-label="Escena 4 — Plano general" data-rail="mercado"></a>
+  <a href="#contacto" aria-label="Escena 5 — Corte a negro" data-rail="contacto"></a>
+</nav>
+
+<header>
+<nav class="nav" aria-label="Principal">
+  <a class="brand" href="#hero" aria-label="Kainos Medical — inicio">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="10.5" stroke="#dfe9f2" stroke-opacity="0.35" stroke-width="1"/>
+      <path d="M 6 18 L 12 4 L 18 18" stroke="#dfe9f2" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="12" cy="13.5" r="1.6" fill="#4fc3f7"/>
+    </svg>
+    <span>Kainos Medical<small>Alethia · Cine Diagnóstico</small></span>
+  </a>
+  <a class="nav-cta" href="#contacto">Para inversores</a>
+</nav>
+</header>
+
+<main id="main">
+
+  <!-- ESC 01 · APERTURA -->
+  <section class="hero" id="hero" aria-labelledby="h-hero">
+    <p class="pill fx on-load"><i aria-hidden="true"></i>En desarrollo · Primeros pilotos 2026</p>
+    <h1 id="h-hero" class="fx on-load" style="--d:.12s">El ultrasonido renace con&nbsp;la&nbsp;IA.</h1>
+    <p class="lede fx on-load" style="--d:.24s">Alethia convierte los ultrasonidos que los hospitales ya tienen en asistentes diagnósticos en tiempo real. Una tableta, una capturadora de video y una IA médica fine-tuned, diseñada para el médico que ve al paciente primero.</p>
+    <div class="btns fx on-load" style="--d:.36s">
+      <a class="btn btn-solid" href="#contacto">Solicitar deck para inversores</a>
+      <a class="btn btn-ghost" href="#producto">Cómo funciona</a>
+    </div>
+    <p class="scrollcue" aria-hidden="true">Desplaza para escanear<i></i></p>
+  </section>
+
+  <!-- ESC 02 · EL VACÍO -->
+  <section class="problema" id="problema" aria-labelledby="h-problema">
+    <div class="wrap">
+      <p class="slate fx" style="justify-content:center">Esc. 02 · El vacío</p>
+      <h2 id="h-problema" class="fx">El médico correcto rara vez es el&nbsp;primero.</h2>
+      <p class="lede fx" style="--d:.15s">En urgencias y clínicas rurales alrededor del mundo, quien recibe al paciente suele ser un médico general, no un radiólogo. El equipo existe. La experiencia no.</p>
+      <ul class="credits">
+        <li class="stat fx"><span class="v">2/3</span><span class="l">de la población mundial sin acceso a imagenología médica</span><span class="f">OMS</span></li>
+        <li class="stat fx"><span class="v">1.9M</span><span class="l">bebés nacen muertos cada año por condiciones que un ultrasonido pudo detectar</span><span class="f">OMS / The Lancet</span></li>
+        <li class="stat fx"><span class="v">30–40%</span><span class="l">de la mortalidad por trauma es por hemorragia no controlada</span><span class="f">NIH</span></li>
+        <li class="stat fx"><span class="v">94%</span><span class="l">precisión de nivel especialista lograda por IA en imágenes médicas</span><span class="f">Lancet Digital Health</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ESC 03 · LA SEÑAL -->
+  <section class="producto" id="producto" aria-labelledby="h-producto">
+    <div class="wrap">
+      <div class="prod-col">
+        <p class="slate fx">Esc. 03 · La señal</p>
+        <h2 id="h-producto" class="fx">Tres capas. Un&nbsp;dispositivo.</h2>
+        <p class="lede fx" style="--d:.15s">Tableta Windows, capturadora de video y el modelo Alethia, preinstalado, calibrado y listo al llegar.</p>
+        <ol style="list-style:none">
+          <li class="paso fx"><span class="n" aria-hidden="true">01</span><div><h3>Conéctalo a lo que ya tienes</h3><p>El módulo captura la salida VGA, DVI o compuesta de cualquier ultrasonido.</p></div></li>
+          <li class="paso fx"><span class="n" aria-hidden="true">02</span><div><h3>Alethia lee la señal</h3><p>Inferencia en el dispositivo, &lt;100&nbsp;ms por frame. Ningún dato del paciente sale de la tableta.</p></div></li>
+          <li class="paso fx"><span class="n" aria-hidden="true">03</span><div><h3>El clínico ve estructura</h3><p>Órganos, patologías, mediciones fetales y líquido libre, en vivo sobre la imagen.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESC 04 · PLANO GENERAL -->
+  <section class="mercado" id="mercado" aria-labelledby="h-mercado">
+    <div class="wrap">
+      <p class="slate fx" style="justify-content:center">Esc. 04 · Plano general</p>
+      <h2 id="h-mercado" class="fx">En el umbral del mercado generacional.</h2>
+      <ul class="mstats">
+        <li class="stat fx"><span class="v">$22.6B</span><span class="l">Mercado de IA en ultrasonido a 2034</span></li>
+        <li class="stat fx" style="--d:.18s"><span class="v">500K+</span><span class="l">Ultrasonidos legacy elegibles para Alethia</span></li>
+        <li class="stat fx" style="--d:.36s"><span class="v">30x</span><span class="l">Más económico que un ultrasonido nuevo con IA</span></li>
+      </ul>
+      <div class="modelo fx">
+        <b>Modelo de negocio</b>
+        <p>Seis vías al mercado: red de radiólogos, clínicas ($4,500 + $199/mes), escuelas de medicina, ministerios de salud, entornos remotos premium, telerradiología integrada.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESC 05 · CORTE A NEGRO -->
+  <section class="contacto" id="contacto" aria-labelledby="h-contacto">
+    <p class="slate fx" style="justify-content:center">Esc. 05 · Corte a negro</p>
+    <h2 id="h-contacto" class="fx">Habla con Kainos&nbsp;Medical.</h2>
+    <p class="lede fx" style="--d:.15s">Inversores, sistemas de salud y socios clínicos. Respondemos en menos de 72&nbsp;horas.</p>
+    <div class="btns fx" style="--d:.3s;justify-content:center">
+      <a class="btn btn-solid" href="mailto:contacto@kainosmedical.com?subject=Deck%20para%20inversores%20—%20Alethia">Enviar mensaje</a>
+    </div>
+    <a class="mailto fx" style="--d:.42s" href="mailto:contacto@kainosmedical.com">contacto@kainosmedical.com</a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="10.5" stroke="#dfe9f2" stroke-opacity="0.35" stroke-width="1"/>
+      <path d="M 6 18 L 12 4 L 18 18" stroke="#dfe9f2" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="12" cy="13.5" r="1.6" fill="#4fc3f7"/>
+    </svg>
+    <p class="disc">Alethia es un sistema de apoyo a la decisión clínica en desarrollo. Aún no cuenta con autorización regulatoria. No apto para uso diagnóstico fuera de programas piloto controlados.</p>
+    <p class="copy">© 2026 Kainos Medical. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ============ reveal machinery ============ */
+document.querySelectorAll(".on-load").forEach(function(el){
+  setTimeout(function(){ el.classList.add("on"); }, 60);
+});
+var io = null;
+if("IntersectionObserver" in window && !REDUCED){
+  io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add("on"); io.unobserve(e.target); }
+    });
+  },{threshold:0.25, rootMargin:"0px 0px -6% 0px"});
+  document.querySelectorAll(".fx:not(.on-load)").forEach(function(el){ io.observe(el); });
+}else{
+  document.querySelectorAll(".fx").forEach(function(el){ el.classList.add("on"); });
+}
+
+/* ============ chapter rail active state ============ */
+var railLinks = {};
+document.querySelectorAll(".rail a").forEach(function(a){ railLinks[a.dataset.rail] = a; });
+var secs = ["hero","problema","producto","mercado","contacto"].map(function(id){
+  return document.getElementById(id);
+});
+function updateRail(){
+  var mid = window.innerHeight * 0.5, current = "hero";
+  secs.forEach(function(s){
+    var r = s.getBoundingClientRect();
+    if(r.top <= mid) current = s.id;
+  });
+  for(var k in railLinks) railLinks[k].classList.toggle("act", k === current);
+}
+
+/* ============ CANVAS — the continuous scan narrative ============ */
+var canvas = document.getElementById("scene");
+var ctx = canvas.getContext("2d");
+var W=0, H=0, DPR=1;
+var CYAN = "79,195,247", PALE = "205,226,240";
+var A = 0.60;            /* wedge half-angle, rad          */
+var apexY = 0, R = 0, CX = 0;
+var particles = [];
+var mx=0.5, my=0.42, hasMouse=false;
+var tcEl = document.getElementById("tc");
+
+/* smoothed narrative signals */
+var S = { scroll:0, density:0, organ:0, bracket:0, dolly:0, fade:1, shift:0 };
+
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function ease(t){ return t*t*(3-2*t); }
+function lerp(a,b,t){ return a+(b-a)*t; }
+
+function resize(){
+  DPR = Math.min(window.devicePixelRatio||1, 2);
+  W = window.innerWidth; H = window.innerHeight;
+  canvas.width = Math.round(W*DPR); canvas.height = Math.round(H*DPR);
+  canvas.style.width = W+"px"; canvas.style.height = H+"px";
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  apexY = H*0.14;
+  R = Math.min(H*0.80, W*0.86);
+  CX = W/2;
+  initParticles();
+}
+
+/* organ = fetal-head biometry ellipse (in units of R, apex space) */
+var ORG = { ox:0.0, oy:0.585, a:0.295, b:0.225, rot:-0.34 };
+function organPoint(kind){
+  var c = Math.cos(ORG.rot), s = Math.sin(ORG.rot), px, py;
+  if(kind === 0){                       /* skull ring */
+    var t = Math.random()*Math.PI*2;
+    var jr = 1 + (Math.random()-0.5)*0.09;
+    px = Math.cos(t)*ORG.a*jr; py = Math.sin(t)*ORG.b*jr;
+  }else if(kind === 1){                 /* interior speckle */
+    var t2 = Math.random()*Math.PI*2, u = Math.sqrt(Math.random())*0.82;
+    px = Math.cos(t2)*ORG.a*u; py = Math.sin(t2)*ORG.b*u;
+  }else{                                /* midline echo (falx) */
+    var q = (Math.random()*2-1)*0.86;
+    px = q*ORG.a; py = (Math.random()-0.5)*0.015;
+  }
+  return { x: ORG.ox + px*c - py*s, y: ORG.oy + px*s + py*c };
+}
+
+function initParticles(){
+  var n = Math.round(clamp(W*H/1900, 280, 760));
+  particles = [];
+  for(var i=0;i<n;i++){
+    var organ = Math.random() < 0.62;
+    var kind = 0, dim = 1;
+    if(organ){
+      var rr = Math.random();
+      if(rr < 0.52){ kind = 0; dim = 1.35; }
+      else if(rr < 0.86){ kind = 1; dim = 0.55; }
+      else { kind = 2; dim = 1.2; }
+    }
+    particles.push({
+      th: (Math.random()*2-1)*A*0.94,
+      u: Math.random(),
+      drift: 0.004 + Math.random()*0.018,
+      ph: Math.random()*Math.PI*2,
+      tw: 0.5 + Math.random()*2.2,
+      sz: 0.8 + Math.random()*1.1,
+      cyan: Math.random() < 0.16,
+      base: 0.25 + Math.random()*0.6,
+      organ: organ ? organPoint(kind) : null,
+      dim: dim,
+      dly: Math.random()
+    });
+  }
+}
+
+window.addEventListener("resize", resize);
+window.addEventListener("mousemove", function(e){
+  hasMouse = true;
+  mx = e.clientX / W; my = e.clientY / H;
+});
+
+/* section-driven narrative signals */
+function progressFrom(el, span, anticip){
+  var r = el.getBoundingClientRect();
+  return clamp((H*anticip - r.top) / (H*span), 0, 1);
+}
+function computeTargets(){
+  var probT = progressFrom(secs[1], 0.9, 0.85);
+  var prodT = progressFrom(secs[2], 0.95, 0.92);
+  var brackT = progressFrom(secs[2], 0.55, 0.45);
+  var dollyT = progressFrom(secs[3], 0.9, 0.85);
+  var recedeT = progressFrom(secs[3], 0.65, 0.30);   /* mercado copy crosses: scene recedes */
+  var fadeT = progressFrom(secs[4], 0.8, 0.7);
+  return {
+    density: probT,
+    organ: prodT,
+    bracket: brackT,
+    dolly: dollyT,
+    fade: (1 - 0.55*ease(recedeT)) * (1 - 0.62*ease(fadeT)),
+    shift: (W > 1020 ? Math.min(W*0.20, 300) : 0) * ease(prodT) * (1 - ease(dollyT))
+  };
+}
+
+var beamPhase = 0, lastT = 0;
+
+function drawMono(size, color, align, text, x, y){
+  ctx.font = size + 'px "IBM Plex Mono", ui-monospace, Menlo, monospace';
+  ctx.fillStyle = color;
+  ctx.textAlign = align;
+  ctx.fillText(text, x, y);
+}
+
+function frame(now){
+  var dt = Math.min((now - lastT)/1000, 0.05) || 0.016;
+  lastT = now;
+
+  /* smooth signals */
+  var tg = computeTargets();
+  S.density += (tg.density - S.density)*0.06;
+  S.organ   += (tg.organ   - S.organ  )*0.055;
+  S.bracket += (tg.bracket - S.bracket)*0.08;
+  S.dolly   += (tg.dolly   - S.dolly  )*0.06;
+  S.fade    += (tg.fade    - S.fade   )*0.08;
+  S.shift   += (tg.shift   - S.shift  )*0.06;
+
+  /* beam sweep: slows as the organ locks */
+  beamPhase += dt * lerp(0.55, 0.16, ease(S.organ));
+  var beamTh = A*0.82*Math.sin(beamPhase) + (hasMouse ? (mx-0.5)*0.22 : 0);
+
+  ctx.clearRect(0,0,W,H);
+  canvas.style.opacity = S.fade;
+
+  var dolly = ease(S.dolly);
+  var scale = 1 - 0.54*dolly;
+  var cx = CX + S.shift, cy = apexY + R*0.55;
+
+  ctx.save();
+  /* cursor parallax + dolly transform */
+  var pax = hasMouse ? (mx-0.5)*16*(1-dolly) : 0;
+  var pay = hasMouse ? (my-0.5)*10*(1-dolly) : 0;
+  ctx.translate(cx+pax, cy+pay - dolly*H*0.16);
+  ctx.scale(scale, scale);
+  ctx.translate(-cx, -cy);
+
+  /* ---- tablet bezel (revealed by the dolly-out) ---- */
+  if(dolly > 0.02){
+    var bw = R*1.62, bh = R*1.16, bx = cx-bw/2, by = apexY - R*0.06, rad = R*0.045;
+    ctx.globalAlpha = dolly;
+    ctx.beginPath();
+    ctx.roundRect(bx-14, by-14, bw+28, bh+28, rad+10);
+    ctx.fillStyle = "rgba(8,15,30,0.94)";
+    ctx.fill();
+    ctx.strokeStyle = "rgba(170,200,222,0.4)";
+    ctx.lineWidth = 1.4; ctx.stroke();
+    ctx.beginPath();
+    ctx.roundRect(bx, by, bw, bh, rad);
+    ctx.strokeStyle = "rgba(120,160,190,0.28)";
+    ctx.lineWidth = 1; ctx.stroke();
+    /* camera dot */
+    ctx.beginPath(); ctx.arc(cx, by-7, 2.2, 0, 7);
+    ctx.fillStyle = "rgba(180,210,230,0.5)"; ctx.fill();
+    /* capture module + cable */
+    var mw = R*0.30, mh = R*0.10;
+    var mxx = bx - 14 - R*0.34 - mw, myy = by + bh*0.72;
+    ctx.beginPath();
+    ctx.moveTo(bx-14, by+bh*0.55);
+    ctx.bezierCurveTo(bx-14-R*0.16, by+bh*0.60, mxx+mw+R*0.18, myy+mh*0.5, mxx+mw, myy+mh*0.5);
+    ctx.strokeStyle = "rgba("+CYAN+",0.4)"; ctx.lineWidth = 1.2; ctx.stroke();
+    ctx.beginPath(); ctx.roundRect(mxx, myy, mw, mh, 4);
+    ctx.strokeStyle = "rgba(170,200,222,0.42)"; ctx.lineWidth = 1.2; ctx.stroke();
+    drawMono(9.5, "rgba("+CYAN+",0.75)", "center", "CAPTURADORA", mxx+mw/2, myy+mh/2-2);
+    drawMono(8.5, "rgba(150,180,200,0.6)", "center", "VGA · DVI · COMP.", mxx+mw/2, myy+mh/2+11);
+    drawMono(10, "rgba(170,200,222,0.6)", "center", "ALETHIA KIT", cx, by+bh+34);
+    drawMono(9, "rgba(120,150,175,0.55)", "center", "TABLETA + CAPTURADORA + MODELO — LISTO AL LLEGAR", cx, by+bh+52);
+    ctx.globalAlpha = 1;
+  }
+
+  /* ---- wedge chrome ---- */
+  var rMin = R*0.16;
+  ctx.strokeStyle = "rgba("+CYAN+",0.16)";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.arc(cx, apexY, R, Math.PI/2-A, Math.PI/2+A);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(cx, apexY, rMin, Math.PI/2-A, Math.PI/2+A);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(cx+Math.sin(-A)*rMin, apexY+Math.cos(-A)*rMin);
+  ctx.lineTo(cx+Math.sin(-A)*R,  apexY+Math.cos(-A)*R);
+  ctx.moveTo(cx+Math.sin(A)*rMin, apexY+Math.cos(A)*rMin);
+  ctx.lineTo(cx+Math.sin(A)*R,  apexY+Math.cos(A)*R);
+  ctx.stroke();
+
+  /* depth ruler (desktop) — folds away as the camera dollies out */
+  if(W > 900 && dolly < 0.95){
+    ctx.globalAlpha = 1 - dolly;
+    var rx = cx + Math.sin(A)*R + 30;
+    ctx.strokeStyle = "rgba(150,185,210,0.22)";
+    ctx.beginPath(); ctx.moveTo(rx, apexY+rMin); ctx.lineTo(rx, apexY+R); ctx.stroke();
+    for(var d=1; d<=5; d++){
+      var yy = apexY + rMin + (R-rMin)*d/5;
+      ctx.beginPath(); ctx.moveTo(rx, yy); ctx.lineTo(rx+7, yy); ctx.stroke();
+      drawMono(9, "rgba(150,185,210,0.4)", "left", (d*3)+" cm", rx+13, yy+3);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  /* ---- beam ---- */
+  ctx.save();
+  ctx.translate(cx, apexY);
+  ctx.rotate(beamTh);
+  var bg = ctx.createLinearGradient(0,0,0,R);
+  bg.addColorStop(0, "rgba("+CYAN+",0)");
+  bg.addColorStop(0.25,"rgba("+CYAN+",0.10)");
+  bg.addColorStop(1, "rgba("+CYAN+",0.02)");
+  ctx.fillStyle = bg;
+  var bw2 = 0.10;
+  ctx.beginPath();
+  ctx.moveTo(0,0);
+  ctx.arc(0,0,R, Math.PI/2-bw2, Math.PI/2+bw2);
+  ctx.closePath();
+  ctx.fill();
+  /* beam leading edge */
+  ctx.strokeStyle = "rgba("+CYAN+",0.28)";
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0,rMin*0.9); ctx.lineTo(0,R); ctx.stroke();
+  ctx.restore();
+
+  /* ---- particles ---- */
+  var t = now/1000;
+  var densF = 0.58 + 0.42*ease(S.density);
+  var orgE = ease(S.organ);
+  var mpx = mx*W, mpy = my*H;
+  for(var i=0;i<particles.length;i++){
+    var p = particles[i];
+    /* free speckle position (polar, slow radial drift) */
+    var rr = rMin + ((p.u + t*p.drift) % 1)*(R-rMin);
+    var th = p.th + Math.sin(t*0.5 + p.ph)*0.014;
+    var fx = cx + Math.sin(th)*rr;
+    var fy = apexY + Math.cos(th)*rr;
+    var x = fx, y = fy, dim = 1;
+    if(p.organ){
+      var e2 = ease(clamp(orgE*1.55 - p.dly*0.55, 0, 1));
+      if(e2 > 0){
+        var oxp = cx + p.organ.x*R + Math.sin(t*1.3+p.ph)*1.6*(1-e2*0.6);
+        var oyp = apexY + p.organ.y*R + Math.cos(t*1.1+p.ph)*1.6*(1-e2*0.6);
+        x = lerp(fx, oxp, e2);
+        y = lerp(fy, oyp, e2);
+        dim = lerp(1, p.dim, e2);
+      }
+    }
+    /* beam brightening */
+    var ang = Math.atan2(x-cx, y-apexY);
+    var dAng = ang - beamTh;
+    var boost = Math.exp(-(dAng*dAng)/(0.02));
+    /* cursor lantern */
+    var cb = 0;
+    if(hasMouse && !REDUCED){
+      var dxm = x-mpx, dym = y-mpy;
+      var dd = dxm*dxm+dym*dym;
+      if(dd < 19600) cb = (1 - Math.sqrt(dd)/140)*0.55;
+    }
+    var alpha = p.base * densF * dim * (0.46 + 0.60*boost + cb) * (0.75 + 0.25*Math.sin(t*p.tw + p.ph));
+    if(alpha < 0.02) continue;
+    ctx.globalAlpha = clamp(alpha, 0, 1);
+    ctx.fillStyle = p.cyan ? "rgb("+CYAN+")" : "rgb("+PALE+")";
+    ctx.fillRect(x - p.sz*0.5, y - p.sz*0.5, p.sz, p.sz);
+  }
+  ctx.globalAlpha = 1;
+
+  /* ---- calipers + detection brackets ---- */
+  var brk = ease(S.bracket);
+  if(brk > 0.01 && orgE > 0.35){
+    var oxc = cx + ORG.ox*R, oyc = apexY + ORG.oy*R;
+    var ea = ORG.a*R, eb = ORG.b*R;
+    ctx.save();
+    ctx.globalAlpha = brk;
+    /* dashed biometry ellipse */
+    ctx.save();
+    ctx.translate(oxc, oyc); ctx.rotate(ORG.rot);
+    ctx.setLineDash([4,6]);
+    ctx.strokeStyle = "rgba("+CYAN+",0.85)";
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(0,0, ea*1.02, eb*1.06, 0, 0, 7); ctx.stroke();
+    ctx.setLineDash([]);
+    /* caliper crosses at major axis */
+    [[-ea*1.02,0],[ea*1.02,0]].forEach(function(pt){
+      ctx.beginPath();
+      ctx.moveTo(pt[0]-5,pt[1]); ctx.lineTo(pt[0]+5,pt[1]);
+      ctx.moveTo(pt[0],pt[1]-5); ctx.lineTo(pt[0],pt[1]+5);
+      ctx.strokeStyle = "#eaf6ff"; ctx.lineWidth = 1.4; ctx.stroke();
+    });
+    ctx.restore();
+    /* detection brackets snap in */
+    var exb = ea*1.42, eyb = eb*1.62;
+    var snap = 1 + (1-brk)*0.35;
+    var L = Math.max(12, R*0.028);
+    ctx.strokeStyle = "rgba("+CYAN+",0.95)";
+    ctx.lineWidth = 1.6;
+    [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(function(cnr){
+      var bxp = oxc + cnr[0]*exb*snap, byp = oyc + cnr[1]*eyb*snap;
+      ctx.beginPath();
+      ctx.moveTo(bxp - cnr[0]*L, byp);
+      ctx.lineTo(bxp, byp);
+      ctx.lineTo(bxp, byp - cnr[1]*L);
+      ctx.stroke();
+    });
+    /* labels — fade with the dolly (measurements retire in the wide shot) */
+    var la = brk * (1 - dolly*0.92) * (W > 760 ? 1 : 0.5);
+    if(la > 0.02){
+      ctx.globalAlpha = la;
+      var fs = W > 760 ? 10.5 : 9.5;
+      drawMono(fs, "rgba("+CYAN+",0.95)", "left", "ALETHIA · CABEZA FETAL · CONF 0.97", oxc - exb, oyc - eyb - 14);
+      drawMono(fs, "rgba(234,246,255,0.9)", "left", "DBP 48.2 mm · 19+3 SEM", oxc - exb, oyc + eyb + 22);
+      if(W > 760) drawMono(fs, "rgba(150,185,210,0.7)", "left", "INFERENCIA 92 ms · EN DISPOSITIVO", oxc - exb, oyc + eyb + 38);
+    }
+    ctx.restore();
+  }
+
+  ctx.restore(); /* dolly transform */
+
+  /* timecode */
+  var doc = document.documentElement;
+  var sp = doc.scrollHeight > H ? window.scrollY/(doc.scrollHeight - H) : 0;
+  var totalF = Math.round(sp * 120 * 24);
+  var ff = totalF % 24, ss = Math.floor(totalF/24)%60, mm2 = Math.floor(totalF/1440);
+  tcEl.textContent = "00:" + String(mm2).padStart(2,"0") + ":" + String(ss).padStart(2,"0") + ":" + String(ff).padStart(2,"0");
+
+  document.body.classList.toggle("deep", window.scrollY > H*0.5);
+  updateRail();
+  requestAnimationFrame(frame);
+}
+
+/* roundRect polyfill for older engines */
+if(!ctx.roundRect){
+  CanvasRenderingContext2D.prototype.roundRect = function(x,y,w,h,r){
+    this.moveTo(x+r,y); this.arcTo(x+w,y,x+w,y+h,r); this.arcTo(x+w,y+h,x,y+h,r);
+    this.arcTo(x,y+h,x,y,r); this.arcTo(x,y,x+w,y,r); this.closePath(); return this;
+  };
+}
+
+resize();
+
+if(REDUCED){
+  /* single static frame: organ formed, brackets on, mid-density */
+  S.density = 1; S.organ = 1; S.bracket = 1; S.dolly = 0; S.fade = 1; S.shift = 0;
+  beamPhase = 0.9;
+  lastT = performance.now();
+  /* draw one frame without scheduling the loop */
+  var raf = requestAnimationFrame;
+  requestAnimationFrame = function(){ return 0; };
+  frame(performance.now()+16);
+  requestAnimationFrame = raf;
+  updateRail();
+  window.addEventListener("scroll", updateRail, {passive:true});
+}else{
+  requestAnimationFrame(frame);
+}
+})();
+</script>
+</body>
+</html>
